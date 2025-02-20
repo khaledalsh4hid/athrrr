@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athrrr Countdown</title>
+    <style>
+        body {
+            background-color: #1C1C1C;
+            color: white;
+            font-family: "Times New Roman", serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 5rem;
+            margin: 0;
+        }
+        p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+        #countdown {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>athrrr</h1>
+    <p>Relentless. Revolutionary. Resilient.</p>
+    <div id="countdown"></div>
+
+    <script>
+        let seconds = 1000000;
+        function updateCountdown() {
+            let days = Math.floor(seconds / 86400);
+            let hours = Math.floor((seconds % 86400) / 3600);
+            let minutes = Math.floor((seconds % 3600) / 60);
+            let secs = seconds % 60;
+            document.getElementById("countdown").innerText = `${days}d ${hours}h ${minutes}m ${secs}s`;
+            if (seconds > 0) seconds--;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
