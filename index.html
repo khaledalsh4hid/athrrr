@@ -3,51 +3,625 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Athrrr Countdown</title>
+    <title>ATHRRR | Visual Branding Agency</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1080 1080'><polygon fill='%232B2B2B' points='779.38,718.21 667.94,582.01 834.89,410.41 621.26,437.73 593.28,220.32 488.4,438.34 260.32,400.39 419.53,544.23 245.11,707.42 439.61,667.01 453.19,859.68 582.83,677.43'/></svg>">
     <style>
+        :root {
+            --charcoal: #2B2B2B;
+            --bone: #F9F9F9;
+            --silver: #99AEAE;
+            --black: #000000;
+            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
         body {
-            background-color: #1C1C1C;
-            color: white;
-            font-family: "Times New Roman", serif;
-            text-align: center;
+            background-color: var(--bone);
+            color: var(--black);
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 18px;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
+            font-weight: 400;
+        }
+        
+        header {
+            padding: 45px 0 10px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo-mark {
+            width: 70px;
+            height: auto;
+            margin-bottom: 35px;
+            opacity: 0.95;
+        }
+        
+        nav {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
             justify-content: center;
+            border-top: 1px solid rgba(153, 174, 174, 0.1);
+            border-bottom: 1px solid rgba(153, 174, 174, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .nav-item {
+            padding: 20px 18px;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1.8px;
+            color: var(--black);
+            text-decoration: none;
+            position: relative;
+            font-weight: 700;
+            transition: color var(--transition);
+            margin: 0 2px;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            color: var(--silver);
+        }
+        
+        .section {
+            max-width: 700px;
+            margin: 40px auto 70px;
+            padding: 0 25px;
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-content {
+            font-size: 19px;
+            line-height: 1.7;
+            color: var(--black);
+            font-weight: 400;
+        }
+        
+        .section-content p {
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 28px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: var(--black);
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid rgba(153, 174, 174, 0.2);
+            background: transparent;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+            transition: border-color var(--transition);
+            color: var(--black);
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--black);
+        }
+        
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+        
+        .submit-btn {
+            background: transparent;
+            border: 1px solid var(--black);
+            padding: 12px 40px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            cursor: pointer;
+            transition: all var(--transition);
+            margin-top: 15px;
+            font-weight: 400;
+        }
+        
+        .submit-btn:hover {
+            background: var(--black);
+            color: var(--bone);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 45px;
+        }
+        
+        .project-item {
+            padding: 0 0 20px;
+            min-height: auto;
+            border-bottom: 1px solid rgba(153, 174, 174, 0.1);
+            transition: all var(--transition);
+        }
+        
+        .project-item:hover {
+            border-color: var(--silver);
+        }
+        
+        .project-title {
+            font-size: 19px;
+            margin-bottom: 8px;
+            letter-spacing: 0.2px;
+            font-weight: 700;
+        }
+        
+        .project-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--silver);
+        }
+        
+        footer {
+            padding: 70px 0 40px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 1px solid rgba(153, 174, 174, 0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            margin: 0;
         }
-        h1 {
-            font-size: 5rem;
-            margin: 0;
+        
+        .logo-type {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            opacity: 0.8;
         }
-        p {
-            font-size: 1.5rem;
-            margin-top: 10px;
+        
+        .logo-type path {
+            fill: var(--silver);
         }
-        #countdown {
-            font-size: 2rem;
-            margin-top: 20px;
+        
+        .copyright {
+            font-size: 13px;
+            color: var(--silver);
+            letter-spacing: 0.8px;
+            font-weight: 400;
+        }
+        
+        .quote {
+            position: relative;
+            padding-left: 20px;
+            margin: 35px 0;
+        }
+        
+        .quote:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background: var(--silver);
+        }
+        
+        .agency-statement {
+            font-size: 24px;
+            line-height: 1.4;
+            margin-bottom: 35px;
+            font-weight: 400;
+            letter-spacing: -0.1px;
+        }
+        
+        .spacer-sm {
+            height: 15px;
+        }
+        
+        .spacer-md {
+            height: 30px;
+        }
+        
+        .spacer-lg {
+            height: 45px;
+        }
+        
+        /* ARCHIVE PROJECT HOVER EFFECT */
+        #archive .project-item {
+            padding: 20px;
+            border: 1px solid transparent;
+            border-bottom: 1px solid rgba(153, 174, 174, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        #archive .project-item:hover {
+            background-color: var(--silver);
+            border: 1px solid var(--silver);
+        }
+        
+        #archive .project-item:hover .project-title,
+        #archive .project-item:hover .project-description {
+            color: var(--bone);
+        }
+        
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            
+            .nav-item {
+                padding: 16px 12px;
+                font-size: 12px;
+                letter-spacing: 1.5px;
+                margin: 0 1px;
+            }
+            
+            .section {
+                margin: 30px auto 50px;
+                padding: 0 20px;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-content {
+                font-size: 17px;
+            }
+            
+            .agency-statement {
+                font-size: 20px;
+            }
+            
+            .spacer-md {
+                height: 25px;
+            }
+            
+            .spacer-lg {
+                height: 35px;
+            }
+            
+            header {
+                padding: 35px 0 5px;
+            }
+            
+            .logo-mark {
+                margin-bottom: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-item {
+                padding: 14px 8px;
+                font-size: 11px;
+                letter-spacing: 1.2px;
+            }
+            
+            .spacer-sm {
+                height: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>athrrr</h1>
-    <p>Relentless. Revolutionary. Resilient.</p>
-    <div id="countdown"></div>
-
+    <header>
+        <svg class="logo-mark" viewBox="0 0 1080 1080">
+            <polygon fill="#2B2B2B" points="779.38,718.21 667.94,582.01 834.89,410.41 621.26,437.73 593.28,220.32 488.4,438.34 260.32,400.39 419.53,544.23 245.11,707.42 439.61,667.01 453.19,859.68 582.83,677.43 "/>
+        </svg>
+        
+        <nav>
+            <div class="nav-container">
+                <a href="#" class="nav-item active" data-section="enter">Enter</a>
+                <a href="#" class="nav-item" data-section="origin">Origin</a>
+                <a href="#" class="nav-item" data-section="patronage">Patronage</a>
+                <a href="#" class="nav-item" data-section="covenant">Covenant</a>
+                <a href="#" class="nav-item" data-section="archive">Archive</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="spacer-md"></div>
+        
+        <!-- ENTER Section -->
+        <section id="enter" class="section active">
+            <div class="section-content">
+                <p class="agency-statement">Strategic brand identities. Designed to endure.</p>
+                
+                <div class="spacer-sm"></div>
+                
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Email address">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Project</label>
+                    <textarea id="message" placeholder="Project description"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="building">Organization</label>
+                    <input type="text" id="building" placeholder="Organization name">
+                </div>
+                
+                <div class="spacer-sm"></div>
+                
+                <button class="submit-btn">Submit</button>
+            </div>
+        </section>
+        
+        <!-- ORIGIN Section -->
+        <section id="origin" class="section">
+            <div class="section-content">
+                <p class="agency-statement">Founded in 2018. Based in Cairo and Benghazi.</p>
+                
+                <div class="spacer-sm"></div>
+                
+                <p>ATHRRR creates brand systems. We combine strategy with visual identity.</p>
+                
+                <div class="spacer-sm"></div>
+                
+                <div class="quote">
+                    Branding requires discipline. We provide structure for creative expression.
+                </div>
+                
+                <div class="spacer-sm"></div>
+                
+                <p>Our team has international experience. We understand global markets.</p>
+            </div>
+        </section>
+        
+        <!-- PATRONAGE Section -->
+        <section id="patronage" class="section">
+            <div class="section-content">
+                <p class="agency-statement">We support exceptional projects. Without initial cost.</p>
+                
+                <div class="spacer-sm"></div>
+                
+                <div class="quote">
+                    Selected initiatives receive our services. We share in future success.
+                </div>
+                
+                <div class="spacer-sm"></div>
+                
+                <p>Projects must demonstrate potential. Impact must be measurable.</p>
+                
+                <div class="spacer-md"></div>
+                
+                <h3>Criteria</h3>
+                <ul>
+                    <li>Innovative solutions</li>
+                    <li>Measurable impact</li>
+                    <li>Sustainable model</li>
+                    <li>Values alignment</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- COVENANT Section -->
+        <section id="covenant" class="section">
+            <div class="section-content">
+                <p class="agency-statement">Our process requires commitment. From both parties.</p>
+                
+                <div class="spacer-sm"></div>
+                
+                <p>Engagements begin with discovery. We analyze position and objectives.</p>
+                
+                <div class="spacer-md"></div>
+                
+                <h3>Deliverables</h3>
+                <ul>
+                    <li>Brand strategy</li>
+                    <li>Visual identity</li>
+                    <li>Brand architecture</li>
+                    <li>Voice platform</li>
+                    <li>Implementation plan</li>
+                </ul>
+                
+                <div class="spacer-sm"></div>
+                
+                <div class="quote">
+                    We build systems. Not temporary solutions.
+                </div>
+            </div>
+        </section>
+        
+        <!-- ARCHIVE Section -->
+        <section id="archive" class="section">
+            <div class="section-content">
+                <p class="agency-statement">Selected projects. Evidence of our approach.</p>
+                
+                <div class="spacer-sm"></div>
+                
+                <p>Each project represents a partnership. Focused on lasting results.</p>
+                
+                <div class="spacer-lg"></div>
+                
+                <div class="project-grid">
+                    <div class="project-item">
+                        <h3 class="project-title">Helios Energy</h3>
+                        <p class="project-description">Renewable energy provider</p>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3 class="project-title">Vault & Vine</h3>
+                        <p class="project-description">Urban agriculture network</p>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3 class="project-title">Axiom Foundry</h3>
+                        <p class="project-description">Research collective</p>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3 class="project-title">Echo Chamber</h3>
+                        <p class="project-description">Audio platform</p>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3 class="project-title">Materia Collective</h3>
+                        <p class="project-description">Materials consortium</p>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3 class="project-title">Lumen Institute</h3>
+                        <p class="project-description">Education initiative</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="spacer-md"></div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <svg class="logo-type" viewBox="0 0 1080 1080">
+                <style type="text/css">
+                    .st0{fill:#99AEAE;} /* Updated to match the silver color */
+                </style>
+                <g>
+                    <path class="st0" d="M250.92,460.66h-19.05l-48.49,141.1l-19.12,2.82v10.91h14.39h12.37h24.96v-10.91l-20.34-2.98l11.2-33.65h50.54
+                        l11.22,34.32l-20.47,2.57v10.66h24.79h30.81h11.64v-10.66l-15.92-1.89L250.92,460.66z M210.88,555.82l21.45-64.46l21.08,64.46
+                        H210.88z"/>
+                    <path class="st0" d="M390.86,491.22h-15.33c0.06-5.57,0.14-11.11,0.23-16.65l21.08-2.27V461.4h-20.83h-31.08h-19.24v10.91
+                        l19.53,2.17c0.38,19.63,0.4,39.36,0.4,58.93v10.08c0,19.9-0.02,39.63-0.4,58.97l-19.54,2.13v10.91h19.24h31.08h20.83v-10.91
+                        l-21.09-2.36c-0.12-6.94-0.21-13.94-0.27-20.94h11.05c53.88,0,68.36-21.34,68.36-45.82C454.89,508.37,435.48,491.22,390.86,491.22z
+                        M389.03,569.15h-13.64c-0.05-8.7-0.07-17.33-0.07-25.75v-10.29c0-9.97,0.04-19.92,0.1-29.84h13.33
+                        c25.21,0,36.64,11.62,36.64,32.35C425.4,555.49,412.94,569.15,389.03,569.15z"/>
+                    <path class="st0" d="M581.36,572.34c-4.5-20-12.46-30.08-32.21-33.24c28.6-4.8,40.28-21.14,40.28-38.01
+                        c0-24.93-20.57-39.69-56.62-39.69h-19.65h-15.41h-15.76h-19.24v10.91l19.53,2.13c0.38,19.65,0.41,39.38,0.41,58.97v10.08
+                        c0,19.9-0.02,39.63-0.4,58.97l-19.54,2.13v10.91h19.24h31.17h19.58v-10.91l-19.89-2.17c-0.37-18.89-0.39-38.05-0.39-58h9.99
+                        c16.55,0,23.7,5.21,27.15,22.41l6.88,32.32c2.53,14.44,11.53,19.18,28.66,19.18c8.85,0,13.48-0.84,21.16-2.83v-10.91l-17.85-2
+                        L581.36,572.34z M512.46,532.7c0-21,0.02-40.13,0.41-59.25h15.02c21.52,0,31.8,9.83,31.8,28.92c0,16.86-9.52,30.33-33.59,30.33
+                        H512.46z"/>
+                    <path class="st0" d="M736.07,572.34c-4.5-20-12.46-30.08-32.21-33.24c28.6-4.8,40.28-21.14,40.28-38.01
+                        c0-24.93-20.57-39.69-56.62-39.69h-19.65h-15.41H636.7h-19.24v10.91l19.53,2.13c0.38,19.65,0.41,39.38,0.41,58.97v10.08
+                        c0,19.9-0.02,39.63-0.4,58.97l-19.54,2.13v10.91h19.24h31.17h19.58v-10.91l-19.89-2.17c-0.37-18.89-0.39-38.05-0.39-58h9.99
+                        c16.55,0,23.7,5.21,27.15,22.41l6.88,32.32c2.53,14.44,11.53,19.18,28.66,19.18c8.85,0,13.48-0.84,21.16-2.83v-10.91l-17.85-2
+                        L736.07,572.34z M667.18,532.7c0-21,0.02-40.13,0.41-59.25h15.02c21.52,0,31.8,9.83,31.8,28.92c0,16.86-9.52,30.33-33.59,30.33
+                        H667.18z"/>
+                    <path class="st0" d="M897.89,602.59l-7.11-30.25c-4.5-20-12.46-30.08-32.21-33.24c28.6-4.8,40.28-21.14,40.28-38.01
+                        c0-24.93-20.57-39.69-56.62-39.69h-19.65h-15.41h-15.76h-19.24v10.91l19.53,2.13c0.38,19.65,0.41,39.38,0.41,58.97v10.08
+                        c0,19.9-0.02,39.63-0.4,58.97l-19.54,2.13v10.91h19.24h31.17h19.58v-10.91l-19.89-2.17c-0.37-18.89-0.39-38.05-0.39-58h9.99
+                        c16.55,0,23.7,5.21,27.15,22.41l6.88,32.32c2.53,14.44,11.53,19.18,28.66,19.18c8.85,0,13.48-0.84,21.16-2.83v-10.91L897.89,602.59
+                        z M821.89,532.7c0-21,0.02-40.13,0.41-59.25h15.02c21.52,0,31.8,9.83,31.8,28.92c0,16.86-9.52,30.33-33.59,30.33H821.89z"/>
+                </g>
+            </svg>
+            <p class="copyright">ATHRRR © 2025</p>
+        </div>
+    </footer>
+    
     <script>
-        let seconds = 1000000;
-        function updateCountdown() {
-            let days = Math.floor(seconds / 86400);
-            let hours = Math.floor((seconds % 86400) / 3600);
-            let minutes = Math.floor((seconds % 3600) / 60);
-            let secs = seconds % 60;
-            document.getElementById("countdown").innerText = `${days}d ${hours}h ${minutes}m ${secs}s`;
-            if (seconds > 0) seconds--;
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab navigation functionality
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.section');
+            
+            // Set first section as active by default
+            sections[0].classList.add('active');
+            navItems[0].classList.add('active');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all items and sections
+                    navItems.forEach(navItem => navItem.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked item and corresponding section
+                    this.classList.add('active');
+                    const targetSection = this.getAttribute('data-section');
+                    document.getElementById(targetSection).classList.add('active');
+                    
+                    // Scroll to top of section
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+            
+            // Simple form submission handling
+            const submitButtons = document.querySelectorAll('.submit-btn');
+            submitButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const form = this.closest('.section-content');
+                    const inputs = form.querySelectorAll('input, textarea');
+                    let allFilled = true;
+                    
+                    inputs.forEach(input => {
+                        if (input.value.trim() === '' && input.required) {
+                            allFilled = false;
+                        }
+                    });
+                    
+                    if (allFilled) {
+                        alert('Received. Response in 48 hours.');
+                        inputs.forEach(input => input.value = '');
+                    } else {
+                        alert('Complete all fields.');
+                    }
+                });
+            });
+            
+            // Add touch effect for mobile devices
+            const projectItems = document.querySelectorAll('#archive .project-item');
+            projectItems.forEach(item => {
+                item.addEventListener('touchstart', function() {
+                    this.classList.add('hover-effect');
+                });
+                
+                item.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        this.classList.remove('hover-effect');
+                    }, 300);
+                });
+            });
+        });
     </script>
 </body>
 </html>
