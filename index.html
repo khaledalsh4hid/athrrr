@@ -1,142 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATHRRR</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F6F6F6'/><polygon fill='%232B2B2B' points='70,65 60,55 75,40 60,42 58,25 50,42 30,40 45,50 30,60 45,58 47,75 55,60'/></svg>">
-    <style>
-        :root {
-            --charcoal: #2B2B2B;
-            --bone: #F9F9F9;
-            --silver: #99AEAE;
-            --light-silver: #D1D9D9;
-            --dark-silver: #7A8A8A;
-            --black: #000000;
-            --white: #FFFFFF;
-            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --spacing-xs: 5px;
-            --spacing-sm: 10px;
-            --spacing-md: 20px;
-            --spacing-lg: 40px;
-            --spacing-xl: 60px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        body { background-color: var(--bone); color: var(--charcoal); font-family: 'Times New Roman', Times, serif; line-height: 1.6; overflow-x: hidden; font-size: 17px; display: flex; flex-direction: column; min-height: 100vh; font-weight: 400; }
-        h1,h2,h3,h4,h5,h6 { font-weight: 400; line-height: 1.3; letter-spacing: 0.5px; }
-        p { margin-bottom: var(--spacing-md); font-weight: 400; color: var(--charcoal); }
-        .agency-statement { font-size: 22px; line-height: 1.35; margin-bottom: var(--spacing-md); font-weight: 400; letter-spacing: 0.2px; }
-        .quote { font-size: 18px; color: var(--dark-silver); margin: var(--spacing-lg) 0; font-weight: 400; line-height: 1.5; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-md); }
-        header { padding: var(--spacing-xl) 0 var(--spacing-sm); text-align: center; position: relative; }
-        .logo-mark { width: 60px; height: auto; margin-bottom: var(--spacing-md); opacity: 0.95; }
-        nav { max-width: 100%; margin: 0 auto; padding: 0 var(--spacing-sm); display: flex; justify-content: center; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-        nav::-webkit-scrollbar { display: none; }
-        .nav-container { display: flex; justify-content: center; gap: 8px; padding: 5px 0; }
-        .nav-item { padding: 8px 0; text-decoration: none; position: relative; transition: color var(--transition); display: flex; flex-direction: column; align-items: center; min-width: 70px; color: var(--charcoal); }
-        .nav-item:hover, .nav-item.active { color: var(--silver); }
-        .nav-icon { width: 70px; height: auto; transition: opacity var(--transition); fill: currentColor; }
-        .nav-item:hover .nav-icon { opacity: 0.8; }
-        .section { max-width: 700px; margin: var(--spacing-lg) auto var(--spacing-lg); padding: 0 var(--spacing-md); display: none; }
-        .section.active { display: block; animation: fadeIn 0.6s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .section-content { font-size: 17px; line-height: 1.7; color: var(--charcoal); font-weight: 400; }
-        .form-group { margin-bottom: var(--spacing-md); }
-        label { display: block; margin-bottom: var(--spacing-xs); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 400; color: var(--charcoal); }
-        input, textarea { width: 100%; padding: var(--spacing-sm) 0; border: none; border-bottom: 1px solid rgba(153, 174, 174, 0.2); background: transparent; font-family: 'Times New Roman', Times, serif; font-size: 12px; transition: border-color var(--transition); color: var(--charcoal); }
-        input:focus, textarea:focus { outline: none; border-color: var(--charcoal); }
-        input::placeholder, textarea::placeholder { font-size: 12px; color: var(--silver); opacity: 0.8; }
-        textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
-        .submit-btn { background: var(--silver); border: none; padding: 12px 30px; font-family: 'Times New Roman', Times, serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1.8px; cursor: pointer; transition: all var(--transition); margin-top: var(--spacing-sm); font-weight: 400; color: var(--bone); display: inline-block; }
-        .submit-btn:hover { background: var(--bone); color: var(--charcoal); }
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-md); }
-        .project-item { padding: var(--spacing-md); transition: all var(--transition); cursor: pointer; position: relative; overflow: hidden; background: var(--bone); border: 1px solid rgba(153, 174, 174, 0.05); }
-        .project-item:hover { background: var(--silver); }
-        .project-title { font-size: 17px; margin-bottom: var(--spacing-xs); font-weight: 400; position: relative; z-index: 2; }
-        .project-description { font-size: 13px; line-height: 1.6; color: var(--silver); position: relative; z-index: 2; }
-        footer { padding: var(--spacing-xl) 0 var(--spacing-lg); text-align: center; margin-top: auto; }
-        .footer-content { display: flex; flex-direction: column; align-items: center; position: relative; }
-        .footer-content .logo-type { width: 120px; /* reduced from 180px */ height: auto; margin-bottom: var(--spacing-sm); opacity: 0.8; fill: var(--silver); /* changed to silver */ transition: fill var(--transition), width var(--transition); }
-        .copyright { font-size: 11px; color: var(--silver); letter-spacing: 1px; font-weight: 400; }
-        @media (max-width: 768px) { header { padding: var(--spacing-lg) 0 0; } .logo-mark { width: 50px; margin-bottom: var(--spacing-sm); } .nav-container { gap: 6px; } .nav-icon { width: 60px; } .section { margin: var(--spacing-md) auto; padding: 0 var(--spacing-sm); } .project-grid { grid-template-columns: 1fr; } .section-content { font-size: 16px; } .agency-statement { font-size: 19px; } .quote { font-size: 16px; } ul li { font-size: 16px; } }
-        @media (max-width: 480px) { .nav-container { gap: 4px; } .nav-icon { width: 50px; } .nav-item { min-width: 55px; padding: 6px 0; } .agency-statement { font-size: 18px; } .quote { font-size: 15px; } .project-item { padding: var(--spacing-sm); } .logo-type { width: 150px; } }
-        @media (max-width: 360px) { .nav-icon { width: 45px; } .nav-item { min-width: 50px; } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATHRRR</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <svg class="logo-mark" viewBox="0 0 1080 1080">
-                <polygon fill="#2B2B2B" points="779.38,718.21 667.94,582.01 834.89,410.41 621.26,437.73 593.28,220.32 488.4,438.34 260.32,400.39 419.53,544.23 245.11,707.42 439.61,667.01 453.19,859.68 582.83,677.43"/>
-            </svg>
-            <nav><div class="nav-container">
-                <a href="#" class="nav-item active" data-section="enter"><svg class="nav-icon" viewBox="0 0 1080 1080" fill="currentColor">...</svg></a>
-                <a href="#" class="nav-item" data-section="origin"><svg class="nav-icon" viewBox="0 0 1080 1080" fill="currentColor">...</svg></a>
-                <a href="#" class="nav-item" data-section="patronage"><svg class="nav-icon" viewBox="0 0 1080 1080" fill="currentColor">...</svg></a>
-                <a href="#" class="nav-item" data-section="covenant"><svg class="nav-icon" viewBox="0 0 1080 1080" fill="currentColor">...</svg></a>
-                <a href="#" class="nav-item" data-section="archive"><svg class="nav-icon" viewBox="0 0 1080 1080" fill="currentColor">...</svg></a>
-            </div></nav>
-        </div>
-    </header>
-    <main>
-        <div class="spacer-md"></div>
-        <section id="enter" class="section active"><div class="container"><div class="section-content">
-            <p class="agency-statement">Strategic brand identities designed to endure.</p>
-            <div class="spacer-sm"></div>
-            <div class="form-group"><label for="name">Name</label><input type="text" id="name" placeholder="Full name" required></div>
-            <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="Email address" required></div>
-            <div class="form-group"><label for="message">Project</label><textarea id="message" placeholder="Describe your vision" required></textarea></div>
-            <div class="form-group"><label for="building">Organization</label><input type="text" id="building" placeholder="Organization name" required></div>
-            <div class="spacer-sm"></div>
-            <button class="submit-btn">Submit</button>
-        </div></div></section>
-        <section id="origin" class="section"><div class="container"><div class="section-content">
-            <p class="agency-statement">Founded 2025. North Africa.</p>
-            <div class="spacer-sm"></div><p>Brand systems. Strategy with visual identity.</p>
-            <div class="spacer-md"></div><div class="quote">Branding requires discipline. Structure for creative expression.</div>
-            <div class="spacer-md"></div><p>International team. Global markets.</p>
-        </div></div></section>
-        <section id="patronage" class="section"><div class="container"><div class="section-content">
-            <p class="agency-statement">Support for exceptional projects.</p>
-            <div class="spacer-sm"></div><div class="quote">Selected initiatives. Share in future success.</div>
-            <div class="spacer-md"></div><p>Demonstrated potential. Measurable impact.</p>
-            <div class="spacer-md"></div><h3>Selection Criteria</h3><div class="spacer-xs"></div><ul>
-                <li>Innovative solutions</li><li>Measurable impact</li><li>Sustainable model</li><li>Values alignment</li>
-            </ul>
-        </div></div></section}
-        <!-- Covenant and Archive sections similarly included -->
-    </main>
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <svg class="logo-type" viewBox="0 0 1650.5 493">...SVG paths...</svg>
-                <div class="copyright">&copy; 2025 ATHRRR. All rights reserved.</div>
-            </div>
-        </div>
-    </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navItems = document.querySelectorAll('.nav-item');
-            const sections = document.querySelectorAll('.section');
-            navItems.forEach(item => item.addEventListener('click', function(e) {
-                e.preventDefault();
-                navItems.forEach(n => n.classList.remove('active'));
-                sections.forEach(s => s.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById(this.dataset.section).classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }));
-            document.querySelectorAll('.submit-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const form = this.closest('.section-content');
-                    const inputs = form.querySelectorAll('input, textarea');
-                    let allFilled = true;
-                    inputs.forEach(input => { if (!input.value.trim()) allFilled = false; });
-                    if (allFilled) { alert('Received. Response in 48 hours.'); inputs.forEach(i => i.value = ''); }
-                    else alert('Complete all fields.');
-                });
-            });
-        });
-    </script>
+  <header>
+    <nav>
+      <div class="nav-logo">
+        <img src="assets/logo.svg" alt="ATHRRR logo" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>We Create Impact</h1>
+      <p>ATHRRR is a creative house focused on high-end branding and visual services.</p>
+    </section>
+
+    <section class="services">
+      <div class="service">
+        <h2>Brand Identity</h2>
+        <p>Custom logo, color palette, and typography to elevate your brand.</p>
+      </div>
+      <div class="service">
+        <h2>Visual Design</h2>
+        <p>Stunning visuals, ads, and assets crafted to convert and inspire.</p>
+      </div>
+      <div class="service">
+        <h2>Consulting</h2>
+        <p>Strategic creative direction for founders ready to scale visually.</p>
+      </div>
+    </section>
+
+    <section class="portfolio">
+      <h2>Our Work</h2>
+      <div class="portfolio-gallery">
+        <img src="assets/project1.jpg" alt="Project 1" />
+        <img src="assets/project2.jpg" alt="Project 2" />
+        <img src="assets/project3.jpg" alt="Project 3" />
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">
+      <svg class="logo-type" width="120" viewBox="0 0 300 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 10H270V60H30V10Z" fill="var(--silver)" />
+      </svg>
+    </div>
+  </footer>
 </body>
+
 </html>
