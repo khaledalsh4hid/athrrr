@@ -20,6 +20,7 @@
             --spacing-md: 20px;
             --spacing-lg: 40px;
             --spacing-xl: 60px;
+            --base-font-size: 12px;
         }
         
         * {
@@ -29,7 +30,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-weight: 900 !important;
-            font-size: 12px; /* Added single font size for all elements */
+            font-size: var(--base-font-size);
         }
         
         body {
@@ -46,20 +47,17 @@
         h1, h2, h3, h4, h5, h6 {
             line-height: 1.3;
             letter-spacing: 0.5px;
-            font-size: 12px; /* Added to ensure headings are same size */
         }
         
         p {
             margin-bottom: var(--spacing-md);
             color: var(--charcoal);
-            font-size: 12px; /* Added to ensure paragraphs are same size */
         }
         
         .agency-statement {
             line-height: 1.35;
             margin-bottom: var(--spacing-md);
             letter-spacing: 0.2px;
-            font-size: 12px; /* Added to ensure agency statement is same size */
         }
         
         .quote {
@@ -67,7 +65,6 @@
             margin: var(--spacing-lg) 0;
             line-height: 1.5;
             font-style: italic;
-            font-size: 12px; /* Added to ensure quotes are same size */
         }
         
         .container {
@@ -121,7 +118,6 @@
             align-items: center;
             min-width: 70px;
             color: var(--charcoal);
-            font-size: 12px; /* Added to ensure nav items are same size */
         }
         
         .nav-item.active {
@@ -163,7 +159,6 @@
         .section-content {
             line-height: 1.7;
             color: var(--charcoal);
-            font-size: 12px; /* Added to ensure section content is same size */
         }
         
         .form-group {
@@ -176,7 +171,6 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: var(--charcoal);
-            font-size: 12px; /* Added to ensure labels are same size */
         }
         
         input, textarea {
@@ -188,7 +182,6 @@
             font-family: 'Times New Roman', Times, serif;
             transition: border-color var(--transition);
             color: var(--charcoal);
-            font-size: 12px; /* Added to ensure inputs are same size */
         }
         
         input:focus, textarea:focus {
@@ -200,7 +193,6 @@
         textarea::placeholder {
             color: var(--silver);
             opacity: 0.8;
-            font-size: 12px; /* Added to ensure placeholders are same size */
         }
         
         textarea {
@@ -221,7 +213,6 @@
             margin-top: var(--spacing-sm);
             color: var(--bone);
             display: inline-block;
-            font-size: 12px; /* Added to ensure button is same size */
         }
         
         .submit-btn:hover {
@@ -262,7 +253,6 @@
             margin-bottom: var(--spacing-xs);
             position: relative;
             z-index: 2;
-            font-size: 12px; /* Added to ensure project titles are same size */
         }
         
         .project-description {
@@ -270,7 +260,6 @@
             color: var(--silver);
             position: relative;
             z-index: 2;
-            font-size: 12px; /* Added to ensure project descriptions are same size */
         }
         
         .project-item:hover {
@@ -296,7 +285,7 @@
         }
         
         .logo-type {
-            width: 100px; /* Reduced from 120px */
+            width: 100px;
             height: auto;
             margin-bottom: var(--spacing-sm);
             opacity: 0.8;
@@ -340,7 +329,6 @@
             margin-bottom: var(--spacing-sm);
             position: relative;
             padding-left: 0;
-            font-size: 12px; /* Added to ensure list items are same size */
         }
         
         #patronage ul li, 
@@ -348,13 +336,41 @@
             margin-bottom: 5px;
         }
         
-        /* Added to make "Deliverables" silver and add spacing */
         #covenant h3 {
             color: var(--silver);
-            margin-bottom: var(--spacing-md); /* Added vertical space below Deliverables */
+            margin-bottom: var(--spacing-md);
         }
         
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--charcoal);
+            color: var(--bone);
+            padding: 15px 25px;
+            border-radius: 2px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1000;
+            max-width: 300px;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .toast.error {
+            background: #d32f2f;
+        }
+
         @media (max-width: 768px) {
+            :root {
+                --base-font-size: 10px;
+            }
+            
             header {
                 padding: var(--spacing-lg) 0 0;
             }
@@ -383,6 +399,10 @@
         }
         
         @media (max-width: 480px) {
+            :root {
+                --base-font-size: 9px;
+            }
+            
             .nav-container {
                 gap: 4px;
             }
@@ -406,6 +426,10 @@
         }
         
         @media (max-width: 360px) {
+            :root {
+                --base-font-size: 8px;
+            }
+            
             .nav-icon {
                 width: 45px;
             }
@@ -417,32 +441,6 @@
             .logo-type {
                 width: 70px;
             }
-        }
-        
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--charcoal);
-            color: var(--bone);
-            padding: 15px 25px;
-            border-radius: 2px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s ease;
-            z-index: 1000;
-            max-width: 300px;
-            font-size: 12px; /* Added to ensure toast is same size */
-        }
-        
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .toast.error {
-            background: #d32f2f;
         }
     </style>
 </head>
@@ -706,7 +704,6 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <!-- Updated logo type with your new SVG -->
                 <svg class="logo-type" viewBox="0 0 1650.5 493">
                     <path fill="currentColor" d="M226.18,185.27c-31.85,0-60.35,24.07-60.35,61.23c0,36.99,28.49,61.23,60.35,61.23
                         c31.85,0,60.17-24.25,60.17-61.23C286.35,209.34,258.03,185.27,226.18,185.27z M226.18,297.65c-26.01,0-48.67-20.17-48.67-51.15
