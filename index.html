@@ -29,6 +29,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-weight: 900 !important;
+            font-size: 12px; /* Added single font size for all elements */
         }
         
         body {
@@ -40,32 +41,25 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            font-size: 14px;
-        }
-        
-        @media (min-width: 769px) {
-            body {
-                font-size: 16px;
-            }
         }
         
         h1, h2, h3, h4, h5, h6 {
             line-height: 1.3;
             letter-spacing: 0.5px;
-            font-size: 1.25em;
+            font-size: 12px; /* Added to ensure headings are same size */
         }
         
         p {
             margin-bottom: var(--spacing-md);
             color: var(--charcoal);
-            font-size: 1em;
+            font-size: 12px; /* Added to ensure paragraphs are same size */
         }
         
         .agency-statement {
             line-height: 1.35;
             margin-bottom: var(--spacing-md);
             letter-spacing: 0.2px;
-            font-size: 1.15em;
+            font-size: 12px; /* Added to ensure agency statement is same size */
         }
         
         .quote {
@@ -73,7 +67,7 @@
             margin: var(--spacing-lg) 0;
             line-height: 1.5;
             font-style: italic;
-            font-size: 1.1em;
+            font-size: 12px; /* Added to ensure quotes are same size */
         }
         
         .container {
@@ -127,6 +121,7 @@
             align-items: center;
             min-width: 70px;
             color: var(--charcoal);
+            font-size: 12px; /* Added to ensure nav items are same size */
         }
         
         .nav-item.active {
@@ -168,6 +163,7 @@
         .section-content {
             line-height: 1.7;
             color: var(--charcoal);
+            font-size: 12px; /* Added to ensure section content is same size */
         }
         
         .form-group {
@@ -180,7 +176,7 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: var(--charcoal);
-            font-size: 0.9em;
+            font-size: 12px; /* Added to ensure labels are same size */
         }
         
         input, textarea {
@@ -192,7 +188,7 @@
             font-family: 'Times New Roman', Times, serif;
             transition: border-color var(--transition);
             color: var(--charcoal);
-            font-size: 1em;
+            font-size: 12px; /* Added to ensure inputs are same size */
         }
         
         input:focus, textarea:focus {
@@ -204,6 +200,7 @@
         textarea::placeholder {
             color: var(--silver);
             opacity: 0.8;
+            font-size: 12px; /* Added to ensure placeholders are same size */
         }
         
         textarea {
@@ -224,7 +221,7 @@
             margin-top: var(--spacing-sm);
             color: var(--bone);
             display: inline-block;
-            font-size: 0.95em;
+            font-size: 12px; /* Added to ensure button is same size */
         }
         
         .submit-btn:hover {
@@ -265,7 +262,7 @@
             margin-bottom: var(--spacing-xs);
             position: relative;
             z-index: 2;
-            font-size: 1.1em;
+            font-size: 12px; /* Added to ensure project titles are same size */
         }
         
         .project-description {
@@ -273,7 +270,7 @@
             color: var(--silver);
             position: relative;
             z-index: 2;
-            font-size: 0.95em;
+            font-size: 12px; /* Added to ensure project descriptions are same size */
         }
         
         .project-item:hover {
@@ -299,7 +296,7 @@
         }
         
         .logo-type {
-            width: 100px;
+            width: 100px; /* Reduced from 120px */
             height: auto;
             margin-bottom: var(--spacing-sm);
             opacity: 0.8;
@@ -343,12 +340,18 @@
             margin-bottom: var(--spacing-sm);
             position: relative;
             padding-left: 0;
-            font-size: 1em;
+            font-size: 12px; /* Added to ensure list items are same size */
         }
         
         #patronage ul li, 
         #covenant ul li {
             margin-bottom: 5px;
+        }
+        
+        /* Added to make "Deliverables" silver and add spacing */
+        #covenant h3 {
+            color: var(--silver);
+            margin-bottom: var(--spacing-md); /* Added vertical space below Deliverables */
         }
         
         @media (max-width: 768px) {
@@ -430,7 +433,7 @@
             transition: all 0.4s ease;
             z-index: 1000;
             max-width: 300px;
-            font-size: 0.95em;
+            font-size: 12px; /* Added to ensure toast is same size */
         }
         
         .toast.show {
@@ -469,7 +472,7 @@
                             <path d="M487.35,482.31h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h36.1h12.03v-10.44l-12.29-1.19c-0.26-14.41-0.27-28.91-0.27-43.41v-5.49c0-14.58,0.01-29.04,0.27-43.23l12.3-1.19v-10.44h-12.03H487.35z"/>
                             <path d="M612.65,540h-14.69v10.44l14.95,2.26c0.18,10.04,0.27,19.73,0.27,30.12v7.91c-0.52,0.03-1.04,0.05-1.59,0.05c-16.46,0-31.68-15.4-31.68-51.14s15.57-50.44,32.56-50.44c3.11,0,6.25,0.51,9.63,1.72l5.77,24.11h14.87l-0.71-28.32c-10.44-5.31-23.36-7.96-33.8-7.96c-41.77,0-64.59,23.01-64.59,60.88c0,39.82,25.13,61.59,61.94,61.59c16.1,0,28.14-3.01,40.53-10.26v-7.26c0-10.97,0.1-21.47,0.28-31.99l8.57-1.28V540h-8.32H612.65z"/>
                             <path d="M672.65,482.31h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h36.1h12.03v-10.44l-12.29-1.19c-0.26-14.41-0.27-28.91-0.27-43.41v-5.49c0-14.58,0.01-29.04,0.27-43.23l12.3-1.19v-10.44h-12.03H672.65z"/>
-                            <path d="M849.8,482.31L834.76,482.31 822.37,482.31 801.49,482.31 801.49,492.75 822.37,494.99 822.37,547.08 636.98,482.31 591.86,482.31 591.86,492.93 603.83,493.73 606.9,498.03 606.9,585.14 591.86,587.25 591.86,597.69 606.9,597.69 619.29,597.69 640.17,597.69 640.17,587.25 619.29,584.91 619.29,515.38 678.04,597.69 696.62,597.69 696.62,564.07 696.62,494.96z"/>
+                            <path d="M849.8,482.31L834.76,482.31 822.37,482.31 801.49,482.31 801.49,492.75 822.37,494.99 822.37,547.08 775.12,482.31 729.99,482.31 729.99,492.93 741.96,493.73 745.03,498.03 745.03,585.14 729.99,587.25 729.99,597.69 745.03,597.69 757.42,597.69 778.3,597.69 778.3,587.25 757.42,584.91 757.42,515.38 816.17,597.69 834.76,597.69 834.76,564.07 834.76,494.96z"/>
                         </svg>
                     </a>
                     
@@ -631,8 +634,8 @@
                     
                     <div class="spacer-md"></div>
                     
-                    <h3>Deliverables</h3>
-                    <div class="spacer-xs"></div>
+                    <h3 style="color: var(--silver);">Deliverables</h3>
+                    <div class="spacer-md"></div>
                     <ul>
                         <li>Brand strategy</li>
                         <li>Visual identity</li>
