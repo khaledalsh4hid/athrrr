@@ -7,495 +7,95 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F6F6F6'/><polygon fill='%232B2B2B' points='70,65 60,55 75,40 60,42 58,25 50,42 30,40 45,50 30,60 45,58 47,75 55,60'/></svg>">
     <style>
         :root {
-            --charcoal: #2B2B2B;
-            --bone: #F9F9F9;
-            --silver: #99AEAE;
-            --light-silver: #D1D9D9;
-            --dark-silver: #7A8A8A;
-            --black: #000000;
-            --white: #FFFFFF;
-            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --spacing-xs: 5px;
-            --spacing-sm: 10px;
-            --spacing-md: 20px;
-            --spacing-lg: 40px;
-            --spacing-xl: 60px;
+            --charcoal: #2B2B2B; --bone: #F9F9F9; --silver: #99AEAE; --light-silver: #D1D9D9; --dark-silver: #7A8A8A;
+            --black: #000000; --white: #FFFFFF; --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --spacing-xs: 5px; --spacing-sm: 10px; --spacing-md: 20px; --spacing-lg: 40px; --spacing-xl: 60px;
             --base-font-size: 12px;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-weight: 900 !important;
-            font-size: var(--base-font-size);
-        }
-        
-        body {
-            background-color: var(--bone);
-            color: var(--charcoal);
-            font-family: 'Times New Roman', Times, serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            line-height: 1.3;
-            letter-spacing: 0.5px;
-        }
-        
-        p {
-            margin-bottom: var(--spacing-md);
-            color: var(--charcoal);
-        }
-        
-        .agency-statement {
-            line-height: 1.35;
-            margin-bottom: var(--spacing-md);
-            letter-spacing: 0.2px;
-        }
-        
-        .quote {
-            color: var(--dark-silver);
-            margin: var(--spacing-lg) 0;
-            line-height: 1.5;
-            font-style: italic;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
-        }
-        
-        header {
-            padding: var(--spacing-xl) 0 var(--spacing-sm);
-            text-align: center;
-            position: relative;
-        }
-        
-        .logo-mark {
-            width: 60px;
-            height: auto;
-            margin-bottom: var(--spacing-md);
-            opacity: 0.95;
-        }
-        
-        nav {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 0 var(--spacing-sm);
-            display: flex;
-            justify-content: center;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        
-        nav::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            padding: 5px 0;
-        }
-        
-        .nav-item {
-            padding: 8px 0;
-            text-decoration: none;
-            position: relative;
-            transition: color var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 70px;
-            color: var(--charcoal);
-        }
-        
-        .nav-item.active {
-            color: var(--charcoal);
-        }
-        
-        .nav-item:hover {
-            color: var(--silver);
-        }
-        
-        .nav-icon {
-            width: 70px;
-            height: auto;
-            transition: all var(--transition);
-            fill: currentColor;
-        }
-        
-        .nav-item:hover .nav-icon {
-            transform: scale(1.05);
-        }
-        
-        .section {
-            max-width: 700px;
-            margin: var(--spacing-lg) auto var(--spacing-lg);
-            padding: 0 var(--spacing-md);
-            display: none;
-        }
-        
-        .section.active {
-            display: block;
-            animation: fadeIn 0.6s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .section-content {
-            line-height: 1.7;
-            color: var(--charcoal);
-        }
-        
-        .form-group {
-            margin-bottom: var(--spacing-md);
-        }
-        
-        label {
-            display: block;
-            margin-bottom: var(--spacing-xs);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--charcoal);
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: var(--spacing-sm) 0;
-            border: none;
-            border-bottom: 1px solid rgba(153, 174, 174, 0.2);
-            background: transparent;
-            font-family: 'Times New Roman', Times, serif;
-            transition: border-color var(--transition);
-            color: var(--charcoal);
-        }
-        
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--charcoal);
-        }
-        
-        input::placeholder,
-        textarea::placeholder {
-            color: var(--silver);
-            opacity: 0.8;
-        }
-        
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-            line-height: 1.6;
-        }
-        
-        .submit-btn {
-            background: var(--silver);
-            border: none;
-            padding: 12px 30px;
-            font-family: 'Times New Roman', Times, serif;
-            text-transform: uppercase;
-            letter-spacing: 1.8px;
-            cursor: pointer;
-            transition: all var(--transition);
-            margin-top: var(--spacing-sm);
-            color: var(--bone);
-            display: inline-block;
-        }
-        
-        .submit-btn:hover {
-            background: var(--bone);
-            color: var(--charcoal);
-        }
-        
-        .submit-btn:disabled {
-            background: var(--dark-silver);
-            cursor: not-allowed;
-        }
-        
-        .form-error {
-            color: #d32f2f;
-            font-size: 0.85em !important;
-            margin-top: 5px;
-            display: none;
-        }
-        
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-md);
-        }
-        
-        .project-item {
-            padding: var(--spacing-md);
-            transition: all var(--transition);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            background: var(--bone);
-            border: 1px solid rgba(153, 174, 174, 0.05);
-        }
-        
-        .project-title {
-            margin-bottom: var(--spacing-xs);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .project-description {
-            line-height: 1.6;
-            color: var(--silver);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .project-item:hover {
-            background: var(--silver);
-        }
-        
-        .project-item:hover .project-title,
-        .project-item:hover .project-description {
-            color: var(--bone);
-        }
-        
-        footer {
-            padding: var(--spacing-xl) 0 var(--spacing-lg);
-            text-align: center;
-            margin-top: auto;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
-        
-        .logo-type {
-            width: 100px;
-            height: auto;
-            margin-bottom: var(--spacing-sm);
-            opacity: 0.8;
-            transition: all 0.4s ease;
-            fill: var(--light-silver);
-        }
-        
-        .logo-type:hover {
-            fill: var(--silver);
-            opacity: 1;
-            transform: scale(1.05);
-        }
-        
-        .spacer-xs {
-            height: var(--spacing-xs);
-        }
-        
-        .spacer-sm {
-            height: var(--spacing-sm);
-        }
-        
-        .spacer-md {
-            height: var(--spacing-md);
-        }
-        
-        .spacer-lg {
-            height: var(--spacing-lg);
-        }
-        
-        .spacer-xl {
-            height: var(--spacing-xl);
-        }
-        
-        ul {
-            list-style: none;
-            margin-bottom: var(--spacing-md);
-            padding-left: 0;
-        }
-        
-        ul li {
-            margin-bottom: var(--spacing-sm);
-            position: relative;
-            padding-left: 0;
-        }
-        
-        #patronage ul li, 
-        #covenant ul li {
-            margin-bottom: 5px;
-        }
-        
-        #covenant h3 {
-            color: var(--silver);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--charcoal);
-            color: var(--bone);
-            padding: 15px 25px;
-            border-radius: 2px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s ease;
-            z-index: 1000;
-            max-width: 300px;
-        }
-        
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .toast.error {
-            background: #d32f2f;
-        }
-
-        /* UPDATED STYLES FOR EXPANDABLE CONTENT */
-        .deliverable-item {
-            margin-bottom: var(--spacing-md);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .deliverable-title {
-            display: flex;
-            align-items: center;
-            color: var(--charcoal); /* Start with black (charcoal) */
-            margin-bottom: var(--spacing-sm);
-            transition: all var(--transition);
-        }
-
-        .deliverable-item.active .deliverable-title {
-            color: var(--silver); /* Turn silver when active */
-        }
-
-        .deliverable-symbol {
-            margin-left: var(--spacing-xs);
-            font-size: 1.2em;
-            transition: all var(--transition);
-        }
-
-        .deliverable-item.active .deliverable-symbol {
-            color: var(--silver); /* Ensure symbol also turns silver */
-        }
-
-        .deliverable-description {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            color: var(--charcoal);
-            line-height: 1.6;
-        }
-
-        .deliverable-item.active .deliverable-description {
-            max-height: 500px;
-        }
-
-        /* NEW ARROW STYLES */
-        .arrow-icon {
-            display: inline-block;
-            height: 1em; /* Match text height */
-            width: auto;
-            margin-left: var(--spacing-xs);
-            fill: currentColor;
-            transition: transform var(--transition);
-        }
-        
-        .deliverable-item.active .arrow-icon {
-            transform: rotate(45deg);
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-weight: 900 !important; font-size: var(--base-font-size); }
+        body { background-color: var(--bone); color: var(--charcoal); font-family: 'Times New Roman', Times, serif; line-height: 1.6; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+        h1, h2, h3, h4, h5, h6 { line-height: 1.3; letter-spacing: 0.5px; }
+        p { margin-bottom: var(--spacing-md); color: var(--charcoal); }
+        .agency-statement { line-height: 1.35; margin-bottom: var(--spacing-md); letter-spacing: 0.2px; }
+        .quote { color: var(--dark-silver); margin: var(--spacing-lg) 0; line-height: 1.5; font-style: italic; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-md); }
+        header { padding: var(--spacing-xl) 0 var(--spacing-sm); text-align: center; position: relative; }
+        .logo-mark { width: 60px; height: auto; margin-bottom: var(--spacing-md); opacity: 0.95; }
+        nav { max-width: 100%; margin: 0 auto; padding: 0 var(--spacing-sm); display: flex; justify-content: center; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        nav::-webkit-scrollbar { display: none; }
+        .nav-container { display: flex; justify-content: center; gap: 8px; padding: 5px 0; }
+        .nav-item { padding: 8px 0; text-decoration: none; position: relative; transition: color var(--transition); display: flex; flex-direction: column; align-items: center; min-width: 70px; color: var(--charcoal); }
+        .nav-item.active { color: var(--charcoal); }
+        .nav-item:hover { color: var(--silver); }
+        .nav-icon { width: 70px; height: auto; transition: all var(--transition); fill: currentColor; }
+        .nav-item:hover .nav-icon { transform: scale(1.05); }
+        .section { max-width: 700px; margin: var(--spacing-lg) auto var(--spacing-lg); padding: 0 var(--spacing-md); display: none; }
+        .section.active { display: block; animation: fadeIn 0.6s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .section-content { line-height: 1.7; color: var(--charcoal); }
+        .form-group { margin-bottom: var(--spacing-md); }
+        label { display: block; margin-bottom: var(--spacing-xs); text-transform: uppercase; letter-spacing: 1.5px; color: var(--charcoal); }
+        input, textarea { width: 100%; padding: var(--spacing-sm) 0; border: none; border-bottom: 1px solid rgba(153, 174, 174, 0.2); background: transparent; font-family: 'Times New Roman', Times, serif; transition: border-color var(--transition); color: var(--charcoal); }
+        input:focus, textarea:focus { outline: none; border-color: var(--charcoal); }
+        input::placeholder, textarea::placeholder { color: var(--silver); opacity: 0.8; }
+        textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+        .submit-btn { background: var(--silver); border: none; padding: 12px 30px; font-family: 'Times New Roman', Times, serif; text-transform: uppercase; letter-spacing: 1.8px; cursor: pointer; transition: all var(--transition); margin-top: var(--spacing-sm); color: var(--bone); display: inline-block; }
+        .submit-btn:hover { background: var(--bone); color: var(--charcoal); }
+        .submit-btn:disabled { background: var(--dark-silver); cursor: not-allowed; }
+        .form-error { color: #d32f2f; font-size: 0.85em !important; margin-top: 5px; display: none; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-md); }
+        .project-item { padding: var(--spacing-md); transition: all var(--transition); cursor: pointer; position: relative; overflow: hidden; background: var(--bone); border: 1px solid rgba(153, 174, 174, 0.05); }
+        .project-title { margin-bottom: var(--spacing-xs); position: relative; z-index: 2; }
+        .project-description { line-height: 1.6; color: var(--silver); position: relative; z-index: 2; }
+        .project-item:hover { background: var(--silver); }
+        .project-item:hover .project-title, .project-item:hover .project-description { color: var(--bone); }
+        footer { padding: var(--spacing-xl) 0 var(--spacing-lg); text-align: center; margin-top: auto; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; position: relative; }
+        .logo-type { width: 100px; height: auto; margin-bottom: var(--spacing-sm); opacity: 0.8; transition: all 0.4s ease; fill: var(--light-silver); }
+        .logo-type:hover { fill: var(--silver); opacity: 1; transform: scale(1.05); }
+        .spacer-xs { height: var(--spacing-xs); }
+        .spacer-sm { height: var(--spacing-sm); }
+        .spacer-md { height: var(--spacing-md); }
+        .spacer-lg { height: var(--spacing-lg); }
+        .spacer-xl { height: var(--spacing-xl); }
+        ul { list-style: none; margin-bottom: var(--spacing-md); padding-left: 0; }
+        ul li { margin-bottom: var(--spacing-sm); position: relative; padding-left: 0; }
+        #patronage ul li, #covenant ul li { margin-bottom: 5px; }
+        #covenant h3 { color: var(--silver); margin-bottom: var(--spacing-md); }
+        .toast { position: fixed; bottom: 20px; right: 20px; background: var(--charcoal); color: var(--bone); padding: 15px 25px; border-radius: 2px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transform: translateY(100px); opacity: 0; transition: all 0.4s ease; z-index: 1000; max-width: 300px; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast.error { background: #d32f2f; }
+        .deliverable-item { margin-bottom: var(--spacing-md); cursor: pointer; position: relative; }
+        .deliverable-title { display: flex; align-items: center; color: var(--charcoal); margin-bottom: var(--spacing-sm); transition: all var(--transition); }
+        .deliverable-item.active .deliverable-title { color: var(--silver); }
+        .deliverable-symbol { margin-left: var(--spacing-xs); font-size: 1.2em; transition: all var(--transition); }
+        .deliverable-item.active .deliverable-symbol { color: var(--silver); }
+        .deliverable-description { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--charcoal); line-height: 1.6; }
+        .deliverable-item.active .deliverable-description { max-height: 500px; }
+        .arrow-icon { display: inline-block; height: 1em; width: auto; margin-left: var(--spacing-xs); fill: currentColor; transition: transform var(--transition); }
+        .deliverable-item.active .arrow-icon { transform: rotate(45deg); }
         @media (max-width: 768px) {
-            :root {
-                --base-font-size: 10px;
-            }
-            
-            header {
-                padding: var(--spacing-lg) 0 0;
-            }
-            
-            .logo-mark {
-                width: 50px;
-                margin-bottom: var(--spacing-sm);
-            }
-            
-            .nav-container {
-                gap: 6px;
-            }
-            
-            .nav-icon {
-                width: 60px;
-            }
-            
-            .section {
-                margin: var(--spacing-md) auto;
-                padding: 0 var(--spacing-sm);
-            }
-            
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
+            :root { --base-font-size: 10px; }
+            header { padding: var(--spacing-lg) 0 0; }
+            .logo-mark { width: 50px; margin-bottom: var(--spacing-sm); }
+            .nav-container { gap: 6px; }
+            .nav-icon { width: 60px; }
+            .section { margin: var(--spacing-md) auto; padding: 0 var(--spacing-sm); }
+            .project-grid { grid-template-columns: 1fr; }
         }
-        
         @media (max-width: 480px) {
-            :root {
-                --base-font-size: 9px;
-            }
-            
-            .nav-container {
-                gap: 4px;
-            }
-            
-            .nav-icon {
-                width: 50px;
-            }
-            
-            .nav-item {
-                min-width: 55px;
-                padding: 6px 0;
-            }
-            
-            .project-item {
-                padding: var(--spacing-sm);
-            }
-            
-            .logo-type {
-                width: 80px;
-            }
+            :root { --base-font-size: 9px; }
+            .nav-container { gap: 4px; }
+            .nav-icon { width: 50px; }
+            .nav-item { min-width: 55px; padding: 6px 0; }
+            .project-item { padding: var(--spacing-sm); }
+            .logo-type { width: 80px; }
         }
-        
         @media (max-width: 360px) {
-            :root {
-                --base-font-size: 8px;
-            }
-            
-            .nav-icon {
-                width: 45px;
-            }
-            
-            .nav-item {
-                min-width: 50px;
-            }
-            
-            .logo-type {
-                width: 70px;
-            }
+            :root { --base-font-size: 8px; }
+            .nav-icon { width: 45px; }
+            .nav-item { min-width: 50px; }
+            .logo-type { width: 70px; }
         }
     </style>
 </head>
@@ -505,7 +105,6 @@
             <svg class="logo-mark" viewBox="0 0 1080 1080">
                 <polygon fill="#2B2B2B" points="779.38,718.21 667.94,582.01 834.89,410.41 621.26,437.73 593.28,220.32 488.4,438.34 260.32,400.39 419.53,544.23 245.11,707.42 439.61,667.01 453.19,859.68 582.83,677.43"/>
             </svg>
-            
             <nav>
                 <div class="nav-container">
                     <a href="#" class="nav-item active" data-section="enter">
@@ -514,10 +113,9 @@
                             <path d="M451.24,480.89L430.36,480.89 430.36,491.33 451.24,493.57 451.24,545.67 403.99,480.89 358.87,480.89 358.87,491.51 370.84,492.32 373.91,496.61 373.91,583.73 358.87,585.84 358.87,596.28 373.91,596.28 386.3,596.28 407.18,596.28 407.18,585.84 386.3,583.5 386.3,513.97 445.05,596.28 463.63,596.28 463.63,562.65 463.63,493.55 478.67,491.33 478.67,480.89 463.63,480.89z"/>
                             <path d="M558.14,480.89h-36.1h-35.22l-0.35,33.45h16.63l2.92-23.01h16.25c0.28,14.8,0.3,29.66,0.3,44.42v5.66c0,14.51-0.01,28.91-0.26,43.04l-13.9,1.38v10.44h13.63h36.1h13.8v-10.44l-14.07-1.36c-0.26-14.41-0.27-28.91-0.27-43.41v-5.49c0-14.58,0.01-29.04,0.27-43.23l12.3-1.19v-10.44h-12.03H558.14z"/>
                             <path d="M678.29,586.01h-28.35c-0.28-14.57-0.3-29.23-0.3-43.89h16.46l1.94,12.57h11.15v-36.63h-11.15l-2.08,12.74h-16.32c0-13.31,0.04-26.5,0.29-39.46h24.85l3.35,19.64h16.64l-1.24-30.08h-43.36h-18.05h-18.05h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h18.05h18.05h46.9l1.24-30.08h-16.64L678.29,586.01z"/>
-                            <path d="M812.2,584.46l-2.04-17.03c-2.15-17.54-7.53-27.72-31.11-30.55c24.83-3.94,32-16.03,32-27.32c0-17.87-15.22-28.67-43.36-28.67h-13.63h-17.34h-18.05H706.8v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h35.39h12.56v-10.44l-12.83-1.27c-0.25-13.68-0.27-27.44-0.27-41.2h5.49c9.03,0,12.56,6.55,13.63,17.52l1.77,17.34c1.59,15.93,12.03,20.88,28.67,20.88c9.2,0,11.5-0.53,21.94-2.83v-10.44L812.2,584.46z M757.42,532.74h-3.89c0-13.79,0.03-27.46,0.28-40.88h3.97c12.92,0,20.53,6.37,20.53,20.35C778.3,522.48,774.41,532.74,757.42,532.74z"/>
+                            <path d="M812.2,584.46l-2.04-17.03c-2.15-17.54-7.53-27.72-31.11-30.55c24.83-3.94,32-16.03,32-27.32c0-17.87-15.22-28.67-43.36-28.67h-13.63h-17.34h-18.05h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h35.39h12.56v-10.44l-12.83-1.27c-0.25-13.68-0.27-27.44-0.27-41.2h5.49c9.03,0,12.56,6.55,13.63,17.52l1.77,17.34c1.59,15.93,12.03,20.88,28.67,20.88c9.2,0,11.5-0.53,21.94-2.83v-10.44l-12.82-1.37L812.2,584.46z M757.42,532.74h-3.89c0-13.79,0.03-27.46,0.28-40.88h3.97c12.92,0,20.53,6.37,20.53,20.35C778.3,522.48,774.41,532.74,757.42,532.74z"/>
                         </svg>
                     </a>
-                    
                     <a href="#" class="nav-item" data-section="origin">
                         <svg class="nav-icon" viewBox="0 0 1080 1080" fill="currentColor">
                             <path d="M287.19,478.77c-29.73,0-56.99,19.64-56.99,61.23c0,41.59,27.08,61.23,56.99,61.23s56.98-19.64,56.98-61.23C344.17,498.41,316.92,478.77,287.19,478.77z M287.19,590.44c-15.04,0-20.71-20-20.71-50.44c0-30.26,5.66-50.61,20.71-50.61c15.04,0,20.71,20.35,20.71,50.61C307.89,570.44,302.23,590.44,287.19,590.44z"/>
@@ -528,7 +126,6 @@
                             <path d="M849.8,482.31L834.76,482.31 822.37,482.31 801.49,482.31 801.49,492.75 822.37,494.99 822.37,547.08 775.12,482.31 729.99,482.31 729.99,492.93 741.96,493.73 745.03,498.03 745.03,585.14 729.99,587.25 729.99,597.69 745.03,597.69 757.42,597.69 778.3,597.69 778.3,587.25 757.42,584.91 757.42,515.38 816.17,597.69 834.76,597.69 834.76,564.07 834.76,494.96z"/>
                         </svg>
                     </a>
-                    
                     <a href="#" class="nav-item" data-section="patronage">
                         <svg class="nav-icon" viewBox="0 0 1080 1080" fill="currentColor">
                             <path d="M87.11,554.16h3.18c39.29,0,52.03-16.64,52.03-36.99c0-21.24-14.51-34.86-54.33-34.86h-0.35H69.59H51.54H39.68v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h36.1h15.4v-10.44l-15.67-1.56C87.16,574.31,87.12,563.34,87.11,554.16z M88.88,493.28c13.1,0,21.41,7.79,21.41,23.71c0,15.93-7.43,26.55-20.71,26.55h-2.48v-6.37c0-14.81,0.01-29.49,0.28-43.89H88.88z"/>
@@ -542,8 +139,6 @@
                             <path d="M1023.68,567.61l-3.38,19.82h-28.35c-0.28-14.57-0.3-29.23-0.3-43.89h16.46l1.94,12.57h11.15v-36.63h-11.15l-2.08,12.74h-16.32c0-13.31,0.04-26.5,0.29-39.46h24.85l3.35,19.64h16.64l-1.24-30.08h-43.36h-18.05h-18.05h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h18.05h18.05h46.9l1.24-30.08H1023.68z"/>
                         </svg>
                     </a>
-                    
-                    <!-- Fixed covenant nav item with correct SVG -->
                     <a href="#" class="nav-item" data-section="covenant">
                         <svg class="nav-icon" viewBox="0 0 1080 1080" fill="currentColor">
                             <path d="M161.04,587.78c-4.02,1.79-8.13,2.84-12.43,2.84c-16.46,0-31.86-13.8-31.86-50.44c0-36.81,15.57-50.97,32.56-50.97c3.75,0,7.09,0.75,10.41,2.28l5.69,24.26h14.51l-0.71-28.14c-9.91-5.31-20-8.85-34.86-8.85c-32.74,0-63.89,16.81-63.89,61.23c0,43.36,28.67,61.23,62.12,61.23c16.28,0,28.85-4.25,37.7-9.2l0.71-27.78h-14.51L161.04,587.78z"/>
@@ -556,7 +151,6 @@
                             <path d="M963.71,492.75h16.43l2.92,23.01h16.46l-0.18-33.45h-35.39h-36.1h-35.22l-0.35,33.45h16.64l2.92-23.01h16.25c0.28,14.8,0.3,29.66,0.3,44.42v5.66c0,14.51-0.01,28.91-0.26,43.04l-13.9,1.38v10.44h13.63h36.1h13.8v-10.44l-14.07-1.36c-0.26-14.36-0.27-28.79-0.27-43.24v-5.49C963.42,522.18,963.43,507.32,963.71,492.75z"/>
                         </svg>
                     </a>
-                    
                     <a href="#" class="nav-item" data-section="archive">
                         <svg class="nav-icon" viewBox="0 0 1080 1080" fill="currentColor">
                             <path d="M226.39,482.31h-21.24L169.8,585.23l-14.02,2.02v10.44h9.73h11.33h16.1v-10.44l-12.12-2.04l6.18-19.37h33.41l6.28,20.26l-12.16,1.69v9.91h15.75h35.57h5.84v-9.91l-9.61-1.11L226.39,482.31z M190.56,554.69l13.39-41.97l13.01,41.97H190.56z"/>
@@ -572,124 +166,81 @@
             </nav>
         </div>
     </header>
-    
     <main>
         <div class="spacer-md"></div>
-        
-        <!-- ENTER Section -->
         <section id="enter" class="section active">
             <div class="container">
                 <div class="section-content">
                     <p class="agency-statement">branding designed to endure.</p>
-                    
                     <div class="spacer-sm"></div>
-                    
                     <form id="contact-form" action="https://formsubmit.co/contact@athrrr.com" method="POST">
-                        <!-- FormSubmit configuration -->
                         <input type="hidden" name="_subject" value="New Submission from ATHRRR Website">
                         <input type="hidden" name="_template" value="table">
                         <input type="text" name="_honey" style="display:none">
                         <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html"> <!-- Optional success page -->
-                        
+                        <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="Full name" required>
                             <div class="form-error" id="name-error"></div>
                         </div>
-                        
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" placeholder="Email address" required>
                             <div class="form-error" id="email-error"></div>
                         </div>
-                        
                         <div class="form-group">
                             <label for="message">Project</label>
                             <textarea id="message" name="message" placeholder="Describe your vision" required></textarea>
                             <div class="form-error" id="message-error"></div>
                         </div>
-                        
                         <div class="form-group">
                             <label for="organization">Organization</label>
                             <input type="text" id="organization" name="organization" placeholder="Organization name">
                         </div>
-                        
                         <div class="spacer-sm"></div>
-                        
                         <button type="submit" class="submit-btn" id="submit-btn">Submit</button>
                     </form>
                 </div>
             </div>
         </section>
-        
-        <!-- ORIGIN Section -->
         <section id="origin" class="section">
             <div class="container">
                 <div class="section-content">
-                    <p class="agency-statement">Founded in North Africa, 2025.
-Independent branding studio.
-Remote operation.</p>
-                    
+                    <p class="agency-statement">Founded in North Africa, 2025. Independent branding studio. Remote operation.</p>
                     <div class="spacer-sm"></div>
-                    
                     <p>Brand systems. Strategy with visual identity.</p>
-                    
                     <div class="spacer-md"></div>
-                    
-                    <div class="quote">
-                        
-                    </div>
-                    
+                    <div class="quote"></div>
                     <div class="spacer-md"></div>
-                    
                     <p>International team.</p>
                 </div>
             </div>
         </section>
-        
-        <!-- PATRONAGE Section -->
         <section id="patronage" class="section">
             <div class="container">
                 <div class="section-content">
-                    <p class="agency-statement">Support for bold, underfunded ideas.
-Clear impact. Credible intent.</p>
-                    
+                    <p class="agency-statement">Support for bold, underfunded ideas. Clear impact. Credible intent.</p>
                     <div class="spacer-sm"></div>
-                    
-                    <div class="quote">
-                        Selected initiatives. Share in future success.
-                    </div>
-                    
+                    <div class="quote">Selected initiatives. Share in future success.</div>
                     <div class="spacer-md"></div>
-                    
                     <p>Demonstrated potential. Measurable impact.</p>
-                    
                     <div class="spacer-md"></div>
-                    
                     <div class="deliverable-item">
-                        <div class="deliverable-title">Selection Criteria 
+                        <div class="deliverable-title">Selection Criteria
                             <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
-                                <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
-                                    l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65 l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
                             </svg>
                         </div>
                         <div class="deliverable-description">
-                            <p>We back ideas that are early, underfunded, but full of promise.<br>
-                            Original thinking with clear purpose.<br>
-                            Budgets may be tight, but the work always matters.<br>
-                            We seek projects that can stand on their own, thoughtful, lasting, and true to their values.</p>
+                            <p>We back ideas that are early, underfunded, but full of promise.<br> Original thinking with clear purpose.<br> Budgets may be tight, but the work always matters.<br> We seek projects that can stand on their own, thoughtful, lasting, and true to their values.</p>
                         </div>
                     </div>
-                    
                     <div class="spacer-md"></div>
-                    
-                    <!-- NEW PATRONAGE APPLICATION FORM -->
                     <div class="deliverable-item">
-                        <div class="deliverable-title">Apply for Patronage 
+                        <div class="deliverable-title">Apply for Patronage
                             <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
-                                <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
-                                    l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65 l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
                             </svg>
                         </div>
                         <div class="deliverable-description">
@@ -699,38 +250,31 @@ Clear impact. Credible intent.</p>
                                 <input type="text" name="_honey" style="display:none">
                                 <input type="hidden" name="_captcha" value="false">
                                 <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
-                                
                                 <div class="form-group">
                                     <label for="patronage-name">Name</label>
                                     <input type="text" id="patronage-name" name="name" placeholder="Full name" required>
                                     <div class="form-error" id="patronage-name-error"></div>
                                 </div>
-                                
                                 <div class="form-group">
                                     <label for="patronage-email">Email</label>
                                     <input type="email" id="patronage-email" name="email" placeholder="Email address" required>
                                     <div class="form-error" id="patronage-email-error"></div>
                                 </div>
-                                
                                 <div class="form-group">
                                     <label for="patronage-project">Project</label>
                                     <textarea id="patronage-project" name="project" placeholder="Describe your project" required></textarea>
                                     <div class="form-error" id="patronage-project-error"></div>
                                 </div>
-                                
                                 <div class="form-group">
                                     <label for="patronage-organization">Organization</label>
                                     <input type="text" id="patronage-organization" name="organization" placeholder="Organization name">
                                 </div>
-                                
                                 <div class="form-group">
                                     <label for="patronage-impact">Expected Impact</label>
                                     <textarea id="patronage-impact" name="impact" placeholder="Describe the impact of your project" required></textarea>
                                     <div class="form-error" id="patronage-impact-error"></div>
                                 </div>
-                                
                                 <div class="spacer-sm"></div>
-                                
                                 <button type="submit" class="submit-btn" id="patronage-submit-btn">Submit Application</button>
                             </form>
                         </div>
@@ -738,75 +282,60 @@ Clear impact. Credible intent.</p>
                 </div>
             </div>
         </section>
-        
-        <!-- COVENANT Section -->
         <section id="covenant" class="section">
             <div class="container">
                 <div class="section-content">
                     <p class="agency-statement">Process requires commitment.</p>
-                    
                     <div class="spacer-sm"></div>
-                    
                     <p>Discovery first. Position and objectives.</p>
-                    
                     <div class="spacer-md"></div>
-                    
                     <h3 style="color: var(--silver);">Deliverables</h3>
                     <div class="spacer-md"></div>
                     <ul>
                         <li class="deliverable-item">
-                            <div class="deliverable-title">Brand discovery 
+                            <div class="deliverable-title">Brand discovery
                                 <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
-                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
-                                        l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65 l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
                                 </svg>
                             </div>
                             <div class="deliverable-description">
                                 <p>We start by understanding what makes your brand necessary. This means researching your audience, analyzing competitors, and defining the core idea that sets you apart. The goal is to build a strategy that guides every decision, from messaging to product development.</p>
                             </div>
                         </li>
-                        
                         <li class="deliverable-item">
-                            <div class="deliverable-title">Visual identity 
+                            <div class="deliverable-title">Visual identity
                                 <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
-                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
-                                        l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65 l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
                                 </svg>
                             </div>
                             <div class="deliverable-description">
                                 <p>Your logo, colors, and design system should communicate who you are before a single word is read. We create visuals with intention, ensuring they work across every platform and adapt as your business grows. This isn't about chasing trends—it's about building recognition that lasts.</p>
                             </div>
                         </li>
-                        
                         <li class="deliverable-item">
-                            <div class="deliverable-title">Brand architecture 
+                            <div class="deliverable-title">Brand architecture
                                 <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
-                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
-                                        l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65 l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
                                 </svg>
                             </div>
                             <div class="deliverable-description">
                                 <p>If you have multiple brands, products, or services, they need to coexist without confusing your audience. We create clear relationships between them, so customers always know what to expect. No overlap, no mixed messages—just a system that makes sense.</p>
                             </div>
                         </li>
-                        
                         <li class="deliverable-item">
-                            <div class="deliverable-title">Voice platform 
+                            <div class="deliverable-title">Voice platform
                                 <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
-                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
-                                        l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65 l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
                                 </svg>
                             </div>
                             <div class="deliverable-description">
                                 <p>How your brand speaks matters as much as what it says. We define the tone, style, and personality behind your words, ensuring consistency whether it's a social post or a customer service email. The result? A voice that's unmistakably yours.</p>
                             </div>
                         </li>
-                        
                         <li class="deliverable-item">
-                            <div class="deliverable-title">Implementation plan 
+                            <div class="deliverable-title">Implementation plan
                                 <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
-                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
-                                        l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65 l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
                                 </svg>
                             </div>
                             <div class="deliverable-description">
@@ -814,54 +343,39 @@ Clear impact. Credible intent.</p>
                             </div>
                         </li>
                     </ul>
-                    
                     <div class="spacer-md"></div>
-                    
-                    <div class="quote">
-                        Systems. Not temporary solutions.
-                    </div>
+                    <div class="quote">Systems. Not temporary solutions.</div>
                 </div>
             </div>
         </section>
-        
-        <!-- ARCHIVE Section -->
         <section id="archive" class="section">
             <div class="container">
                 <div class="section-content">
                     <p class="agency-statement">Selected projects. Evidence of approach.</p>
-                    
                     <div class="spacer-sm"></div>
-                    
                     <p>Partnerships. Lasting results.</p>
-                    
                     <div class="spacer-md"></div>
-                    
                     <div class="project-grid">
                         <div class="project-item">
                             <h3 class="project-title">TESTING</h3>
                             <p class="project-description">Strategic brand development</p>
                         </div>
-                        
                         <div class="project-item">
                             <h3 class="project-title">TESTING</h3>
                             <p class="project-description">Identity system refinement</p>
                         </div>
-                        
                         <div class="project-item">
                             <h3 class="project-title">TESTING</h3>
                             <p class="project-description">Visual language creation</p>
                         </div>
-                        
                         <div class="project-item">
                             <h3 class="project-title">TESTING</h3>
                             <p class="project-description">Brand architecture</p>
                         </div>
-                        
                         <div class="project-item">
                             <h3 class="project-title">TESTING</h3>
                             <p class="project-description">Market positioning</p>
                         </div>
-                        
                         <div class="project-item">
                             <h3 class="project-title">TESTING</h3>
                             <p class="project-description">Identity implementation</p>
@@ -870,134 +384,64 @@ Clear impact. Credible intent.</p>
                 </div>
             </div>
         </section>
-        
         <div class="spacer-xl"></div>
     </main>
-    
     <footer>
         <div class="container">
             <div class="footer-content">
                 <svg class="logo-type" viewBox="0 0 1650.5 493">
-                    <path fill="currentColor" d="M226.18,185.27c-31.85,0-60.35,24.07-60.35,61.23c0,36.99,28.49,61.23,60.35,61.23
-                        c31.85,0,60.17-24.25,60.17-61.23C286.35,209.34,258.03,185.27,226.18,185.27z M226.18,297.65c-26.01,0-48.67-20.17-48.67-51.15
-                        c0-30.97,22.65-51.14,48.67-51.14c26.02,0,48.67,20.17,48.67,51.14C274.85,277.47,252.19,297.65,226.18,297.65z"/>
-                    <path fill="currentColor" d="M240.59,273.44c-2.03,0.86-4.11,1.37-6.27,1.37c-9.91,0-18.94-9.38-18.94-28.49s9.03-28.85,19.29-28.85
-                        c1.85,0,3.55,0.39,5.23,1.11l3.09,13.04h8.67l-0.53-16.99c-5.66-3.19-11.5-5.31-20.35-5.31c-19.64,0-38.23,11.68-38.23,37.34
-                        c0,24.6,17.17,36.28,37.16,36.28c9.56,0,16.99-2.66,22.12-5.66l0.35-16.64h-8.67L240.59,273.44z"/>
-                    <path fill="currentColor" d="M372.72,271.1c29.02-19.47,45.66-34.69,45.66-53.45c0-17.34-11.5-31.68-38.23-31.68
-                        c-23.71,0-43.36,10.79-43.36,30.62c2.3,4.78,7.08,7.79,12.56,7.79c5.66,0,12.56-2.65,14.33-16.1l1.68-12.67
-                        c0.9-0.05,1.8-0.07,2.74-0.07c10.26,0,16.64,8.14,16.64,22.65c0,17.7-8.67,28.85-24.78,45.84c-7.43,7.61-14.87,15.22-22.48,22.65
-                        v17.52h82.11v-24.78h-59.75C364.24,276.69,368.52,273.89,372.72,271.1z"/>
-                    <path fill="currentColor" d="M476.43,185.98c-23.36,0-43.36,19.47-43.36,61.41c0,40.88,20,59.64,43.36,59.64s43.89-18.76,43.89-59.64
-                        C520.31,205.44,499.79,185.98,476.43,185.98z M476.43,297.29c-7.43,0-12.39-9.56-12.39-49.91c0-41.94,4.96-51.85,12.39-51.85
-                        s12.92,10.09,12.92,51.85C489.34,287.56,483.86,297.29,476.43,297.29z"/>
-                    <path fill="currentColor" d="M570.93,271.1c29.02-19.47,45.66-34.69,45.66-53.45c0-17.34-11.5-31.68-38.23-31.68
-                        c-23.71,0-43.36,10.79-43.36,30.62c2.3,4.78,7.08,7.79,12.56,7.79c5.66,0,12.57-2.65,14.33-16.1l1.68-12.67
-                        c0.9-0.05,1.8-0.07,2.74-0.07c10.26,0,16.63,8.14,16.63,22.65c0,17.7-8.67,28.85-24.78,45.84c-7.43,7.61-14.87,15.22-22.48,22.65
-                        v17.52h82.11v-24.78h-59.75C562.45,276.69,566.74,273.89,570.93,271.1z"/>
-                    <path fill="currentColor" d="M674.64,233.58c-6.16,0-11.83,0.44-17.31,1.48l1.39-21.47h56.8v-24.78h-67.6l-3.72,56.1l4.96,4.42
-                        c5.84-1.42,9.03-1.95,15.04-1.95c13.8,0,20.71,8.85,20.71,25.66c0,15.4-8.85,24.25-22.12,24.25c-1.18,0,2.16-0.12-3.29-0.46
-                        l-0.95-13.35c-0.88-11.5-5.66-16.1-13.63-16.1c-5.13,0-10.26,2.83-12.39,8.67c0,18.41,13.98,30.97,38.58,30.97
-                        c27.61,0,49.2-11.68,49.2-37.52C720.3,245.97,703.31,233.58,674.64,233.58z"/>
-                    <path fill="currentColor" d="M833.21,188.81h-21.24l-35.36,102.92l-14.02,2.02v10.44h9.73h11.33h16.1v-10.44l-12.12-2.04l6.18-19.37h33.41
-                        l6.28,20.26l-12.16,1.69v9.91h15.75h35.57h5.84v-9.91l-9.61-1.11L833.21,188.81z M797.38,261.19l13.39-41.97l13.01,41.97H797.38z"/>
-                    <path fill="currentColor" d="M942.23,188.81h-36.1h-35.22l-0.35,33.45h16.64l2.92-23.01h16.25c0.28,14.8,0.3,29.66,0.3,44.42v5.66
-                        c0,14.51-0.01,28.91-0.26,43.04l-13.89,1.38v10.44h13.63h36.1h13.8v-10.44l-14.07-1.36c-0.26-14.36-0.27-28.79-0.27-43.24v-5.49
-                        c0-14.99,0.01-29.85,0.29-44.42h16.43l2.92,23.01h16.46l-0.18-33.45H942.23z"/>
-                    <path fill="currentColor" d="M1062.58,188.81h-10.62v10.44l10.88,1.09c0.23,12.96,0.27,25.96,0.27,38.9h-29.73
-                        c0-13.12,0.03-26.13,0.27-38.92l10.88-1.07v-10.44h-10.62h-36.1h-11.5v10.44l11.76,1.23c0.26,14.39,0.27,28.85,0.27,43.19v5.66
-                        c0,14.57-0.01,29.02-0.27,43.19l-11.77,1.23v10.44h11.5h36.1h10.62v-10.44l-10.88-1.07c-0.25-14.04-0.27-28.16-0.27-42.28h29.73
-                        c0,14.32-0.02,28.43-0.27,42.26l-10.88,1.1v10.44h10.62h36.1h11.5v-10.44l-11.76-1.18c-0.26-14.41-0.27-28.87-0.27-43.24v-5.66
-                        c0-14.58,0.01-29.04,0.27-43.23l11.77-1.18v-10.44h-11.5H1062.58z"/>
-                    <path fill="currentColor" d="M1223.45,275.35c-2.15-17.54-7.53-27.72-31.11-30.55c24.83-3.94,32-16.03,32-27.32
-                        c0-17.87-15.22-28.67-43.36-28.67h-13.63h-17.34h-18.05h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66
-                        c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h35.39h12.56v-10.44l-12.83-1.27c-0.25-13.68-0.27-27.44-0.27-41.2h5.49
-                        c9.03,0,12.56,6.55,13.63,17.52l1.77,17.34c1.59,15.93,12.03,20.88,28.67,20.88c9.2,0,11.5-0.53,21.94-2.83v-10.44l-12.82-1.37
-                        L1223.45,275.35z M1170.71,240.66h-3.89c0-13.79,0.03-27.46,0.28-40.88h3.97c12.92,0,20.53,6.37,20.53,20.35
-                        C1191.59,230.4,1187.7,240.66,1170.71,240.66z"/>
-                    <path fill="currentColor" d="M1346.63,275.35c-2.15-17.54-7.53-27.72-31.12-30.55c24.83-3.94,32-16.03,32-27.32
-                        c0-17.87-15.22-28.67-43.36-28.67h-13.63h-17.34h-18.05h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66
-                        c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h35.39h12.57v-10.44l-12.83-1.27c-0.25-13.68-0.27-27.44-0.27-41.2h5.49
-                        c9.03,0,12.57,6.55,13.63,17.52l1.77,17.34c1.59,15.93,12.03,20.88,28.67,20.88c9.2,0,11.5-0.53,21.94-2.83v-10.44l-12.82-1.37
-                        L1346.63,275.35z M1293.89,240.66H1290c0-13.79,0.03-27.46,0.28-40.88h3.97c12.92,0,20.53,6.37,20.53,20.35
-                        C1314.77,230.4,1310.88,240.66,1293.89,240.66z"/>
-                    <path fill="currentColor" d="M1471.85,292.38l-2.04-17.03c-2.15-17.54-7.53-27.72-31.11-30.55c24.83-3.94,32-16.03,32-27.32
-                        c0-17.87-15.22-28.67-43.36-28.67h-13.63h-17.34h-18.05h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66
-                        c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h35.39h12.56v-10.44l-12.83-1.27c-0.25-13.68-0.27-27.44-0.27-41.2h5.49
-                        c9.03,0,12.56,6.55,13.63,17.52l1.77,17.34c1.59,15.93,12.03,20.88,28.67,20.88c9.2,0,11.5-0.53,21.94-2.83v-10.44L1471.85,292.38z
-                        M1417.07,240.66h-3.89c0-13.79,0.03-27.46,0.28-40.88h3.97c12.92,0,20.53,6.37,20.53,20.35
-                        C1437.95,230.4,1434.06,240.66,1417.07,240.66z"/>
+                    <path fill="currentColor" d="M226.18,185.27c-31.85,0-60.35,24.07-60.35,61.23c0,36.99,28.49,61.23,60.35,61.23 c31.85,0,60.17-24.25,60.17-61.23C286.35,209.34,258.03,185.27,226.18,185.27z M226.18,297.65c-26.01,0-48.67-20.17-48.67-51.15 c0-30.97,22.65-51.14,48.67-51.14c26.02,0,48.67,20.17,48.67,51.14C274.85,277.47,252.19,297.65,226.18,297.65z"/>
+                    <path fill="currentColor" d="M240.59,273.44c-2.03,0.86-4.11,1.37-6.27,1.37c-9.91,0-18.94-9.38-18.94-28.49s9.03-28.85,19.29-28.85 c1.85,0,3.55,0.39,5.23,1.11l3.09,13.04h8.67l-0.53-16.99c-5.66-3.19-11.5-5.31-20.35-5.31c-19.64,0-38.23,11.68-38.23,37.34 c0,24.6,17.17,36.28,37.16,36.28c9.56,0,16.99-2.66,22.12-5.66l0.35-16.64h-8.67L240.59,273.44z"/>
+                    <path fill="currentColor" d="M372.72,271.1c29.02-19.47,45.66-34.69,45.66-53.45c0-17.34-11.5-31.68-38.23-31.68 c-23.71,0-43.36,10.79-43.36,30.62c2.3,4.78,7.08,7.79,12.56,7.79c5.66,0,12.56-2.65,14.33-16.1l1.68-12.67 c0.9-0.05,1.8-0.07,2.74-0.07c10.26,0,16.64,8.14,16.64,22.65c0,17.7-8.67,28.85-24.78,45.84c-7.43,7.61-14.87,15.22-22.48,22.65 v17.52h82.11v-24.78h-59.75C364.24,276.69,368.52,273.89,372.72,271.1z"/>
+                    <path fill="currentColor" d="M476.43,185.98c-23.36,0-43.36,19.47-43.36,61.41c0,40.88,20,59.64,43.36,59.64s43.89-18.76,43.89-59.64 C520.31,205.44,499.79,185.98,476.43,185.98z M476.43,297.29c-7.43,0-12.39-9.56-12.39-49.91c0-41.94,4.96-51.85,12.39-51.85 s12.92,10.09,12.92,51.85C489.34,287.56,483.86,297.29,476.43,297.29z"/>
+                    <path fill="currentColor" d="M570.93,271.1c29.02-19.47,45.66-34.69,45.66-53.45c0-17.34-11.5-31.68-38.23-31.68 c-23.71,0-43.36,10.79-43.36,30.62c2.3,4.78,7.08,7.79,12.56,7.79c5.66,0,12.57-2.65,14.33-16.1l1.68-12.67 c0.9-0.05,1.8-0.07,2.74-0.07c10.26,0,16.63,8.14,16.63,22.65c0,17.7-8.67,28.85-24.78,45.84c-7.43,7.61-14.87,15.22-22.48,22.65 v17.52h82.11v-24.78h-59.75C562.45,276.69,566.74,273.89,570.93,271.1z"/>
+                    <path fill="currentColor" d="M674.64,233.58c-6.16,0-11.83,0.44-17.31,1.48l1.39-21.47h56.8v-24.78h-67.6l-3.72,56.1l4.96,4.42 c5.84-1.42,9.03-1.95,15.04-1.95c13.8,0,20.71,8.85,20.71,25.66c0,15.4-8.85,24.25-22.12,24.25c-1.18,0,2.16-0.12-3.29-0.46 l-0.95-13.35c-0.88-11.5-5.66-16.1-13.63-16.1c-5.13,0-10.26,2.83-12.39,8.67c0,18.41,13.98,30.97,38.58,30.97 c27.61,0,49.2-11.68,49.2-37.52C720.3,245.97,703.31,233.58,674.64,233.58z"/>
+                    <path fill="currentColor" d="M833.21,188.81h-21.24l-35.36,102.92l-14.02,2.02v10.44h9.73h11.33h16.1v-10.44l-12.12-2.04l6.18-19.37h33.41 l6.28,20.26l-12.16,1.69v9.91h15.75h35.57h5.84v-9.91l-9.61-1.11L833.21,188.81z M797.38,261.19l13.39-41.97l13.01,41.97H797.38z"/>
+                    <path fill="currentColor" d="M942.23,188.81h-36.1h-35.22l-0.35,33.45h16.64l2.92-23.01h16.25c0.28,14.8,0.3,29.66,0.3,44.42v5.66 c0,14.51-0.01,28.91-0.26,43.04l-13.89,1.38v10.44h13.63h36.1h13.8v-10.44l-14.07-1.36c-0.26-14.36-0.27-28.79-0.27-43.24v-5.49 c0-14.99,0.01-29.85,0.29-44.42h16.43l2.92,23.01h16.46l-0.18-33.45H942.23z"/>
+                    <path fill="currentColor" d="M1062.58,188.81h-10.62v10.44l10.88,1.09c0.23,12.96,0.27,25.96,0.27,38.9h-29.73 c0-13.12,0.03-26.13,0.27-38.92l10.88-1.07v-10.44h-10.62h-36.1h-11.5v10.44l11.76,1.23c0.26,14.39,0.27,28.85,0.27,43.19v5.66 c0,14.57-0.01,29.02-0.27,43.19l-11.77,1.23v10.44h11.5h36.1h10.62v-10.44l-10.88-1.07c-0.25-14.04-0.27-28.16-0.27-42.28h29.73 c0,14.32-0.02,28.43-0.27,42.26l-10.88,1.1v10.44h10.62h36.1h11.5v-10.44l-11.76-1.18c-0.26-14.41-0.27-28.87-0.27-43.24v-5.66 c0-14.58,0.01-29.04,0.27-43.23l11.77-1.18v-10.44h-11.5H1062.58z"/>
+                    <path fill="currentColor" d="M1223.45,275.35c-2.15-17.54-7.53-27.72-31.11-30.55c24.83-3.94,32-16.03,32-27.32 c0-17.87-15.22-28.67-43.36-28.67h-13.63h-17.34h-18.05h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66 c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h35.39h12.56v-10.44l-12.83-1.27c-0.25-13.68-0.27-27.44-0.27-41.2h5.49 c9.03,0,12.56,6.55,13.63,17.52l1.77,17.34c1.59,15.93,12.03,20.88,28.67,20.88c9.2,0,11.5-0.53,21.94-2.83v-10.44l-12.82-1.37 L1223.45,275.35z M1170.71,240.66h-3.89c0-13.79,0.03-27.46,0.28-40.88h3.97c12.92,0,20.53,6.37,20.53,20.35 C1191.59,230.4,1187.7,240.66,1170.71,240.66z"/>
+                    <path fill="currentColor" d="M1346.63,275.35c-2.15-17.54-7.53-27.72-31.12-30.55c24.83-3.94,32-16.03,32-27.32 c0-17.87-15.22-28.67-43.36-28.67h-13.63h-17.34h-18.05h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66 c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h35.39h12.57v-10.44l-12.83-1.27c-0.25-13.68-0.27-27.44-0.27-41.2h5.49 c9.03,0,12.57,6.55,13.63,17.52l1.77,17.34c1.59,15.93,12.03,20.88,28.67,20.88c9.2,0,11.5-0.53,21.94-2.83v-10.44l-12.82-1.37 L1346.63,275.35z M1293.89,240.66H1290c0-13.79,0.03-27.46,0.28-40.88h3.97c12.92,0,20.53,6.37,20.53,20.35 C1314.77,230.4,1310.88,240.66,1293.89,240.66z"/>
+                    <path fill="currentColor" d="M1471.85,292.38l-2.04-17.03c-2.15-17.54-7.53-27.72-31.11-30.55c24.83-3.94,32-16.03,32-27.32 c0-17.87-15.22-28.67-43.36-28.67h-13.63h-17.34h-18.05h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66 c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h35.39h12.56v-10.44l-12.83-1.27c-0.25-13.68-0.27-27.44-0.27-41.2h5.49 c9.03,0,12.56,6.55,13.63,17.52l1.77,17.34c1.59,15.93,12.03,20.88,28.67,20.88c9.2,0,11.5-0.53,21.94-2.83v-10.44L1471.85,292.38z M1417.07,240.66h-3.89c0-13.79,0.03-27.46,0.28-40.88h3.97c12.92,0,20.53,6.37,20.53,20.35 C1437.95,230.4,1434.06,240.66,1417.07,240.66z"/>
                 </svg>
             </div>
         </div>
     </footer>
-    
-    <!-- Toast notification -->
     <div class="toast" id="toast">Message received. We'll respond in 48 hours.</div>
-    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Tab navigation functionality
             const navItems = document.querySelectorAll('.nav-item');
             const sections = document.querySelectorAll('.section');
-            
-            // Set first section as active by default
             sections[0].classList.add('active');
             navItems[0].classList.add('active');
-            
             navItems.forEach(item => {
                 item.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    // Remove active class from all items and sections
                     navItems.forEach(navItem => navItem.classList.remove('active'));
                     sections.forEach(section => section.classList.remove('active'));
-                    
-                    // Add active class to clicked item and corresponding section
                     this.classList.add('active');
                     const targetSection = this.getAttribute('data-section');
                     document.getElementById(targetSection).classList.add('active');
-                    
-                    // Scroll to top of section
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
-            
-            // Enhanced Form Submission for Contact Form
             const contactForm = document.getElementById('contact-form');
             const toast = document.getElementById('toast');
             const submitBtn = document.getElementById('submit-btn');
-
             if (contactForm) {
                 contactForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
-                    
-                    // Validate form
-                    if (!validateForm(contactForm, 'contact')) {
-                        return;
-                    }
-
-                    // Change button text and disable
+                    if (!validateForm(contactForm, 'contact')) { return; }
                     submitBtn.textContent = 'Sending...';
                     submitBtn.disabled = true;
-
                     try {
-                        // Create FormData object
                         const formData = new FormData(contactForm);
-                        
-                        // Send form data using Fetch API
                         const response = await fetch('https://formsubmit.co/ajax/contact@athrrr.com', {
                             method: 'POST',
                             body: formData,
-                            headers: { 
-                                'Accept': 'application/json'
-                            }
+                            headers: { 'Accept': 'application/json' }
                         });
-                        
                         const result = await response.json();
-                        
                         if (response.ok && result.success === "true") {
-                            // Show success message
                             toast.textContent = 'Message sent successfully!';
                             toast.classList.add('show');
                             contactForm.reset();
@@ -1005,59 +449,37 @@ Clear impact. Credible intent.</p>
                             throw new Error(result.message || 'Form submission failed');
                         }
                     } catch (error) {
-                        // Show error message
                         toast.textContent = 'Error: ' + error.message;
                         toast.classList.add('show');
                         toast.classList.add('error');
                         console.error('Form submission error:', error);
                     } finally {
-                        // Hide toast after 5 seconds
                         setTimeout(() => {
                             toast.classList.remove('show');
                             toast.classList.remove('error');
                         }, 5000);
-                        
-                        // Reset button
                         submitBtn.textContent = 'Submit';
                         submitBtn.disabled = false;
                     }
                 });
             }
-
-            // Enhanced Form Submission for Patronage Form
             const patronageForm = document.getElementById('patronage-form');
             const patronageSubmitBtn = document.getElementById('patronage-submit-btn');
-
             if (patronageForm) {
                 patronageForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
-                    
-                    // Validate form
-                    if (!validateForm(patronageForm, 'patronage')) {
-                        return;
-                    }
-
-                    // Change button text and disable
+                    if (!validateForm(patronageForm, 'patronage')) { return; }
                     patronageSubmitBtn.textContent = 'Sending...';
                     patronageSubmitBtn.disabled = true;
-
                     try {
-                        // Create FormData object
                         const formData = new FormData(patronageForm);
-                        
-                        // Send form data using Fetch API
                         const response = await fetch('https://formsubmit.co/ajax/contact@athrrr.com', {
                             method: 'POST',
                             body: formData,
-                            headers: { 
-                                'Accept': 'application/json'
-                            }
+                            headers: { 'Accept': 'application/json' }
                         });
-                        
                         const result = await response.json();
-                        
                         if (response.ok && result.success === "true") {
-                            // Show success message
                             toast.textContent = 'Patronage application submitted!';
                             toast.classList.add('show');
                             patronageForm.reset();
@@ -1065,46 +487,32 @@ Clear impact. Credible intent.</p>
                             throw new Error(result.message || 'Form submission failed');
                         }
                     } catch (error) {
-                        // Show error message
                         toast.textContent = 'Error: ' + error.message;
                         toast.classList.add('show');
                         toast.classList.add('error');
                         console.error('Form submission error:', error);
                     } finally {
-                        // Hide toast after 5 seconds
                         setTimeout(() => {
                             toast.classList.remove('show');
                             toast.classList.remove('error');
                         }, 5000);
-                        
-                        // Reset button
                         patronageSubmitBtn.textContent = 'Submit Application';
                         patronageSubmitBtn.disabled = false;
                     }
                 });
             }
-
             function validateForm(form, formType) {
                 let isValid = true;
-                
-                // Reset errors
-                form.querySelectorAll('.form-error').forEach(el => {
-                    el.style.display = 'none';
-                });
-                
+                form.querySelectorAll('.form-error').forEach(el => { el.style.display = 'none'; });
                 if (formType === 'contact') {
                     const name = form.querySelector('#name').value.trim();
                     const email = form.querySelector('#email').value.trim();
                     const message = form.querySelector('#message').value.trim();
-
-                    // Validate name
                     if (!name) {
                         document.getElementById('name-error').textContent = 'Name is required';
                         document.getElementById('name-error').style.display = 'block';
                         isValid = false;
                     }
-
-                    // Validate email
                     if (!email) {
                         document.getElementById('email-error').textContent = 'Email is required';
                         document.getElementById('email-error').style.display = 'block';
@@ -1114,28 +522,22 @@ Clear impact. Credible intent.</p>
                         document.getElementById('email-error').style.display = 'block';
                         isValid = false;
                     }
-
-                    // Validate message
                     if (!message) {
                         document.getElementById('message-error').textContent = 'Project description is required';
                         document.getElementById('message-error').style.display = 'block';
                         isValid = false;
                     }
-                } 
+                }
                 else if (formType === 'patronage') {
                     const name = form.querySelector('#patronage-name').value.trim();
                     const email = form.querySelector('#patronage-email').value.trim();
                     const project = form.querySelector('#patronage-project').value.trim();
                     const impact = form.querySelector('#patronage-impact').value.trim();
-
-                    // Validate name
                     if (!name) {
                         document.getElementById('patronage-name-error').textContent = 'Name is required';
                         document.getElementById('patronage-name-error').style.display = 'block';
                         isValid = false;
                     }
-
-                    // Validate email
                     if (!email) {
                         document.getElementById('patronage-email-error').textContent = 'Email is required';
                         document.getElementById('patronage-email-error').style.display = 'block';
@@ -1145,40 +547,28 @@ Clear impact. Credible intent.</p>
                         document.getElementById('patronage-email-error').style.display = 'block';
                         isValid = false;
                     }
-
-                    // Validate project
                     if (!project) {
                         document.getElementById('patronage-project-error').textContent = 'Project description is required';
                         document.getElementById('patronage-project-error').style.display = 'block';
                         isValid = false;
                     }
-                    
-                    // Validate impact
                     if (!impact) {
                         document.getElementById('patronage-impact-error').textContent = 'Impact description is required';
                         document.getElementById('patronage-impact-error').style.display = 'block';
                         isValid = false;
                     }
                 }
-
                 return isValid;
             }
-
-            // Expandable content functionality for deliverables
             const deliverableItems = document.querySelectorAll('.deliverable-item');
-            
             deliverableItems.forEach(item => {
                 const title = item.querySelector('.deliverable-title');
-                
                 title.addEventListener('click', function() {
-                    // Close all other items
                     deliverableItems.forEach(otherItem => {
                         if (otherItem !== item) {
                             otherItem.classList.remove('active');
                         }
                     });
-                    
-                    // Toggle current item
                     item.classList.toggle('active');
                 });
             });
