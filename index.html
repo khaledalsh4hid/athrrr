@@ -366,6 +366,42 @@
             background: #d32f2f;
         }
 
+        /* NEW STYLES FOR EXPANDABLE CONTENT */
+        .deliverable-item {
+            margin-bottom: var(--spacing-md);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .deliverable-title {
+            display: flex;
+            align-items: center;
+            color: var(--silver);
+            margin-bottom: var(--spacing-sm);
+            transition: color var(--transition);
+        }
+
+        .deliverable-title:hover {
+            color: var(--charcoal);
+        }
+
+        .deliverable-symbol {
+            margin-left: var(--spacing-xs);
+            font-size: 1.2em;
+        }
+
+        .deliverable-description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        .deliverable-item.active .deliverable-description {
+            max-height: 500px;
+        }
+
         @media (max-width: 768px) {
             :root {
                 --base-font-size: 10px;
@@ -494,7 +530,7 @@
                             <path d="M245.07,478.77c-29.73,0-56.98,19.64-56.98,61.23c0,41.59,27.08,61.23,56.98,61.23s56.99-19.64,56.99-61.23C302.05,498.41,274.8,478.77,245.07,478.77z M245.07,590.44c-15.04,0-20.71-20-20.71-50.44c0-30.26,5.66-50.61,20.71-50.61c15.04,0,20.71,20.35,20.71,50.61C265.77,570.44,260.11,590.44,245.07,590.44z"/>
                             <path d="M397.8,482.31L380.45,482.31 380.45,491.86 393.74,494.3 370.95,561.76 348.94,493.76 363.29,491.86 363.29,482.31 345.24,482.31 307.54,482.31 302.59,482.31 302.59,492.75 311.54,493.64 348.24,597.69 369.48,597.69 405.62,494.8 417.79,492.75 417.79,482.31 410.01,482.31z"/>
                             <path d="M498.83,587.43h-28.35c-0.28-14.57-0.3-29.23-0.3-43.89h16.46l1.94,12.57h11.15v-36.63h-11.15l-2.08,12.74h-16.32c0-13.31,0.04-26.5,0.29-39.46h24.85l3.35,19.64h16.64l-1.24-30.08h-43.36h-18.05h-18.05h-11.86v10.44l12.12,1.2c0.26,14.4,0.27,28.86,0.27,43.22v5.66c0,14.57-0.01,29.03-0.27,43.22l-12.12,1.2v10.44h11.86h18.05h18.05h46.9l1.24-30.08h-16.64L498.83,587.43z"/>
-                            <path d="M646.45,492.75L646.45,482.31 631.41,482.31 619.02,482.31 598.14,482.31 598.14,492.75 619.02,494.99 619.02,547.08 571.77,482.31 526.64,482.31 526.64,492.93 538.62,493.73 541.68,498.03 541.68,585.14 526.64,587.25 526.64,597.69 541.68,597.69 554.07,597.69 574.95,597.69 574.95,587.25 554.07,584.91 554.07,515.38 612.83,597.69 631.41,597.69 631.41,564.07 631.41,494.96z"/>
+                            <path d="M646.45,492.75L646.45,482.31 631.41,482.31 619.02,482.31 663.35,482.31 663.35,492.75 684.24,494.99 684.24,547.08 636.98,482.31 591.86,482.31 591.86,492.93 603.83,493.73 606.9,498.03 606.9,585.14 591.86,587.25 591.86,597.69 606.9,597.69 619.29,597.69 640.17,597.69 640.17,587.25 619.29,584.91 619.29,515.38 678.04,597.69 696.62,597.69 696.62,564.07 696.62,494.96z"/>
                             <path d="M712.46,482.31h-21.24l-35.36,102.92l-14.02,2.02v10.44h9.73h11.33h16.1v-10.44l-12.12-2.04l6.18-19.37h33.41l6.28,20.26l-12.16,1.69v9.91h15.75h35.57h5.84v-9.91l-9.61-1.11L712.46,482.31z M676.63,554.69l13.39-41.97l13.01,41.97H676.63z"/>
                             <path d="M857.05,482.31L836.17,482.31 836.17,492.75 857.05,494.99 857.05,547.08 809.8,482.31 764.68,482.31 764.68,492.93 776.65,493.73 779.72,498.03 779.72,585.14 764.68,587.25 764.68,597.69 779.72,597.69 792.11,597.69 812.99,597.69 812.99,587.25 792.11,584.91 792.11,515.38 850.86,597.69 869.44,597.69 869.44,564.07 869.44,494.96 884.49,492.75 884.49,482.31 869.44,482.31z"/>
                             <path d="M963.71,492.75h16.43l2.92,23.01h16.46l-0.18-33.45h-35.39h-36.1h-35.22l-0.35,33.45h16.64l2.92-23.01h16.25c0.28,14.8,0.3,29.66,0.3,44.42v5.66c0,14.51-0.01,28.91-0.26,43.04l-13.9,1.38v10.44h13.63h36.1h13.8v-10.44l-14.07-1.36c-0.26-14.36-0.27-28.79-0.27-43.24v-5.49C963.42,522.18,963.43,507.32,963.71,492.75z"/>
@@ -637,11 +673,40 @@ Remote operation.</p>
                     <h3 style="color: var(--silver);">Deliverables</h3>
                     <div class="spacer-md"></div>
                     <ul>
-                        <li>Brand strategy</li>
-                        <li>Visual identity</li>
-                        <li>Brand architecture</li>
-                        <li>Voice platform</li>
-                        <li>Implementation plan</li>
+                        <li class="deliverable-item">
+                            <div class="deliverable-title">Brand discovery <span class="deliverable-symbol">↘</span></div>
+                            <div class="deliverable-description">
+                                <p>We start by understanding what makes your brand necessary. This means researching your audience, analyzing competitors, and defining the core idea that sets you apart. The goal is to build a strategy that guides every decision, from messaging to product development.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="deliverable-item">
+                            <div class="deliverable-title">Visual identity <span class="deliverable-symbol">↘</span></div>
+                            <div class="deliverable-description">
+                                <p>Your logo, colors, and design system should communicate who you are before a single word is read. We create visuals with intention, ensuring they work across every platform and adapt as your business grows. This isn't about chasing trends—it's about building recognition that lasts.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="deliverable-item">
+                            <div class="deliverable-title">Brand architecture <span class="deliverable-symbol">↘</span></div>
+                            <div class="deliverable-description">
+                                <p>If you have multiple brands, products, or services, they need to coexist without confusing your audience. We create clear relationships between them, so customers always know what to expect. No overlap, no mixed messages—just a system that makes sense.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="deliverable-item">
+                            <div class="deliverable-title">Voice platform <span class="deliverable-symbol">↘</span></div>
+                            <div class="deliverable-description">
+                                <p>How your brand speaks matters as much as what it says. We define the tone, style, and personality behind your words, ensuring consistency whether it's a social post or a customer service email. The result? A voice that's unmistakably yours.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="deliverable-item">
+                            <div class="deliverable-title">Implementation plan <span class="deliverable-symbol">↘</span></div>
+                            <div class="deliverable-description">
+                                <p>Ideas only matter if they're executed well. We outline the steps, timelines, and resources needed to bring your brand to life. This includes training your team, rolling out assets, and setting up processes to maintain quality over time.</p>
+                            </div>
+                        </li>
                     </ul>
                     
                     <div class="spacer-md"></div>
@@ -889,6 +954,25 @@ Remote operation.</p>
 
                 return isValid;
             }
+
+            // Expandable content functionality for deliverables
+            const deliverableItems = document.querySelectorAll('.deliverable-item');
+            
+            deliverableItems.forEach(item => {
+                const title = item.querySelector('.deliverable-title');
+                
+                title.addEventListener('click', function() {
+                    // Close all other items
+                    deliverableItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
         });
     </script>
 </body>
