@@ -407,6 +407,20 @@
             max-height: 500px;
         }
 
+        /* NEW ARROW STYLES */
+        .arrow-icon {
+            display: inline-block;
+            height: 1em; /* Match text height */
+            width: auto;
+            margin-left: var(--spacing-xs);
+            fill: currentColor;
+            transition: transform var(--transition);
+        }
+        
+        .deliverable-item.active .arrow-icon {
+            transform: rotate(45deg);
+        }
+
         @media (max-width: 768px) {
             :root {
                 --base-font-size: 10px;
@@ -654,12 +668,71 @@ Clear impact. Credible intent.</p>
                     <div class="spacer-md"></div>
                     
                     <div class="deliverable-item">
-                        <div class="deliverable-title">Selection Criteria <span class="deliverable-symbol">&#x2198;&#xFE0E;</span></div>
+                        <div class="deliverable-title">Selection Criteria 
+                            <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
+                                <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
+                                    l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                            </svg>
+                        </div>
                         <div class="deliverable-description">
                             <p>We back ideas that are early, underfunded, but full of promise.<br>
                             Original thinking with clear purpose.<br>
                             Budgets may be tight, but the work always matters.<br>
                             We seek projects that can stand on their own, thoughtful, lasting, and true to their values.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="spacer-md"></div>
+                    
+                    <!-- NEW PATRONAGE APPLICATION FORM -->
+                    <div class="deliverable-item">
+                        <div class="deliverable-title">Apply for Patronage 
+                            <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
+                                <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
+                                    l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                            </svg>
+                        </div>
+                        <div class="deliverable-description">
+                            <form id="patronage-form" action="https://formsubmit.co/contact@athrrr.com" method="POST">
+                                <input type="hidden" name="_subject" value="New Patronage Application">
+                                <input type="hidden" name="_template" value="table">
+                                <input type="text" name="_honey" style="display:none">
+                                <input type="hidden" name="_captcha" value="false">
+                                <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
+                                
+                                <div class="form-group">
+                                    <label for="patronage-name">Name</label>
+                                    <input type="text" id="patronage-name" name="name" placeholder="Full name" required>
+                                    <div class="form-error" id="patronage-name-error"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="patronage-email">Email</label>
+                                    <input type="email" id="patronage-email" name="email" placeholder="Email address" required>
+                                    <div class="form-error" id="patronage-email-error"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="patronage-project">Project</label>
+                                    <textarea id="patronage-project" name="project" placeholder="Describe your project" required></textarea>
+                                    <div class="form-error" id="patronage-project-error"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="patronage-organization">Organization</label>
+                                    <input type="text" id="patronage-organization" name="organization" placeholder="Organization name">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="patronage-impact">Expected Impact</label>
+                                    <textarea id="patronage-impact" name="impact" placeholder="Describe the impact of your project" required></textarea>
+                                    <div class="form-error" id="patronage-impact-error"></div>
+                                </div>
+                                
+                                <div class="spacer-sm"></div>
+                                
+                                <button type="submit" class="submit-btn" id="patronage-submit-btn">Submit Application</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -682,35 +755,60 @@ Clear impact. Credible intent.</p>
                     <div class="spacer-md"></div>
                     <ul>
                         <li class="deliverable-item">
-                            <div class="deliverable-title">Brand discovery <span class="deliverable-symbol">&#x2198;&#xFE0E;</span></div>
+                            <div class="deliverable-title">Brand discovery 
+                                <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
+                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
+                                        l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                </svg>
+                            </div>
                             <div class="deliverable-description">
                                 <p>We start by understanding what makes your brand necessary. This means researching your audience, analyzing competitors, and defining the core idea that sets you apart. The goal is to build a strategy that guides every decision, from messaging to product development.</p>
                             </div>
                         </li>
                         
                         <li class="deliverable-item">
-                            <div class="deliverable-title">Visual identity <span class="deliverable-symbol">&#x2198;&#xFE0E;</span></div>
+                            <div class="deliverable-title">Visual identity 
+                                <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
+                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
+                                        l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                </svg>
+                            </div>
                             <div class="deliverable-description">
                                 <p>Your logo, colors, and design system should communicate who you are before a single word is read. We create visuals with intention, ensuring they work across every platform and adapt as your business grows. This isn't about chasing trends—it's about building recognition that lasts.</p>
                             </div>
                         </li>
                         
                         <li class="deliverable-item">
-                            <div class="deliverable-title">Brand architecture <span class="deliverable-symbol">&#x2198;&#xFE0E;</span></div>
+                            <div class="deliverable-title">Brand architecture 
+                                <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
+                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
+                                        l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                </svg>
+                            </div>
                             <div class="deliverable-description">
                                 <p>If you have multiple brands, products, or services, they need to coexist without confusing your audience. We create clear relationships between them, so customers always know what to expect. No overlap, no mixed messages—just a system that makes sense.</p>
                             </div>
                         </li>
                         
                         <li class="deliverable-item">
-                            <div class="deliverable-title">Voice platform <span class="deliverable-symbol">&#x2198;&#xFE0E;</span></div>
+                            <div class="deliverable-title">Voice platform 
+                                <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
+                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
+                                        l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                </svg>
+                            </div>
                             <div class="deliverable-description">
                                 <p>How your brand speaks matters as much as what it says. We define the tone, style, and personality behind your words, ensuring consistency whether it's a social post or a customer service email. The result? A voice that's unmistakably yours.</p>
                             </div>
                         </li>
                         
                         <li class="deliverable-item">
-                            <div class="deliverable-title">Implementation plan <span class="deliverable-symbol">&#x2198;&#xFE0E;</span></div>
+                            <div class="deliverable-title">Implementation plan 
+                                <svg class="arrow-icon" viewBox="0 0 1080 1080" fill="currentColor">
+                                    <path d="M294.54,730.07l369.27-16.29L378.17,470.49L255.44,347.76l92.32-92.32l122.73,122.73l243.29,285.65
+                                        l16.29-369.28h61.91l32.58,467.02l-62.99,63l-467.02-32.59V730.07z"/>
+                                </svg>
+                            </div>
                             <div class="deliverable-description">
                                 <p>Ideas only matter if they're executed well. We outline the steps, timelines, and resources needed to bring your brand to life. This includes training your team, rolling out assets, and setting up processes to maintain quality over time.</p>
                             </div>
@@ -865,99 +963,202 @@ Clear impact. Credible intent.</p>
                 });
             });
             
-            // Enhanced Form Submission
+            // Enhanced Form Submission for Contact Form
             const contactForm = document.getElementById('contact-form');
             const toast = document.getElementById('toast');
             const submitBtn = document.getElementById('submit-btn');
 
-            contactForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                // Validate form
-                if (!validateForm()) {
-                    return;
-                }
-
-                // Change button text and disable
-                submitBtn.textContent = 'Sending...';
-                submitBtn.disabled = true;
-
-                try {
-                    // Create FormData object
-                    const formData = new FormData(contactForm);
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
                     
-                    // Send form data using Fetch API
-                    const response = await fetch('https://formsubmit.co/ajax/contact@athrrr.com', {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 
-                            'Accept': 'application/json'
-                        }
-                    });
-                    
-                    const result = await response.json();
-                    
-                    if (response.ok && result.success === "true") {
-                        // Show success message
-                        toast.textContent = 'Message sent successfully!';
-                        toast.classList.add('show');
-                        contactForm.reset();
-                    } else {
-                        throw new Error(result.message || 'Form submission failed');
+                    // Validate form
+                    if (!validateForm(contactForm, 'contact')) {
+                        return;
                     }
-                } catch (error) {
-                    // Show error message
-                    toast.textContent = 'Error: ' + error.message;
-                    toast.classList.add('show');
-                    toast.classList.add('error');
-                    console.error('Form submission error:', error);
-                } finally {
-                    // Hide toast after 5 seconds
-                    setTimeout(() => {
-                        toast.classList.remove('show');
-                        toast.classList.remove('error');
-                    }, 5000);
+
+                    // Change button text and disable
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+
+                    try {
+                        // Create FormData object
+                        const formData = new FormData(contactForm);
+                        
+                        // Send form data using Fetch API
+                        const response = await fetch('https://formsubmit.co/ajax/contact@athrrr.com', {
+                            method: 'POST',
+                            body: formData,
+                            headers: { 
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (response.ok && result.success === "true") {
+                            // Show success message
+                            toast.textContent = 'Message sent successfully!';
+                            toast.classList.add('show');
+                            contactForm.reset();
+                        } else {
+                            throw new Error(result.message || 'Form submission failed');
+                        }
+                    } catch (error) {
+                        // Show error message
+                        toast.textContent = 'Error: ' + error.message;
+                        toast.classList.add('show');
+                        toast.classList.add('error');
+                        console.error('Form submission error:', error);
+                    } finally {
+                        // Hide toast after 5 seconds
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                            toast.classList.remove('error');
+                        }, 5000);
+                        
+                        // Reset button
+                        submitBtn.textContent = 'Submit';
+                        submitBtn.disabled = false;
+                    }
+                });
+            }
+
+            // Enhanced Form Submission for Patronage Form
+            const patronageForm = document.getElementById('patronage-form');
+            const patronageSubmitBtn = document.getElementById('patronage-submit-btn');
+
+            if (patronageForm) {
+                patronageForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
                     
-                    // Reset button
-                    submitBtn.textContent = 'Submit';
-                    submitBtn.disabled = false;
-                }
-            });
+                    // Validate form
+                    if (!validateForm(patronageForm, 'patronage')) {
+                        return;
+                    }
 
-            function validateForm() {
+                    // Change button text and disable
+                    patronageSubmitBtn.textContent = 'Sending...';
+                    patronageSubmitBtn.disabled = true;
+
+                    try {
+                        // Create FormData object
+                        const formData = new FormData(patronageForm);
+                        
+                        // Send form data using Fetch API
+                        const response = await fetch('https://formsubmit.co/ajax/contact@athrrr.com', {
+                            method: 'POST',
+                            body: formData,
+                            headers: { 
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (response.ok && result.success === "true") {
+                            // Show success message
+                            toast.textContent = 'Patronage application submitted!';
+                            toast.classList.add('show');
+                            patronageForm.reset();
+                        } else {
+                            throw new Error(result.message || 'Form submission failed');
+                        }
+                    } catch (error) {
+                        // Show error message
+                        toast.textContent = 'Error: ' + error.message;
+                        toast.classList.add('show');
+                        toast.classList.add('error');
+                        console.error('Form submission error:', error);
+                    } finally {
+                        // Hide toast after 5 seconds
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                            toast.classList.remove('error');
+                        }, 5000);
+                        
+                        // Reset button
+                        patronageSubmitBtn.textContent = 'Submit Application';
+                        patronageSubmitBtn.disabled = false;
+                    }
+                });
+            }
+
+            function validateForm(form, formType) {
                 let isValid = true;
-                const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const message = document.getElementById('message').value.trim();
-
+                
                 // Reset errors
-                document.querySelectorAll('.form-error').forEach(el => {
+                form.querySelectorAll('.form-error').forEach(el => {
                     el.style.display = 'none';
                 });
+                
+                if (formType === 'contact') {
+                    const name = form.querySelector('#name').value.trim();
+                    const email = form.querySelector('#email').value.trim();
+                    const message = form.querySelector('#message').value.trim();
 
-                // Validate name
-                if (!name) {
-                    document.getElementById('name-error').textContent = 'Name is required';
-                    document.getElementById('name-error').style.display = 'block';
-                    isValid = false;
-                }
+                    // Validate name
+                    if (!name) {
+                        document.getElementById('name-error').textContent = 'Name is required';
+                        document.getElementById('name-error').style.display = 'block';
+                        isValid = false;
+                    }
 
-                // Validate email
-                if (!email) {
-                    document.getElementById('email-error').textContent = 'Email is required';
-                    document.getElementById('email-error').style.display = 'block';
-                    isValid = false;
-                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    document.getElementById('email-error').textContent = 'Please enter a valid email';
-                    document.getElementById('email-error').style.display = 'block';
-                    isValid = false;
-                }
+                    // Validate email
+                    if (!email) {
+                        document.getElementById('email-error').textContent = 'Email is required';
+                        document.getElementById('email-error').style.display = 'block';
+                        isValid = false;
+                    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        document.getElementById('email-error').textContent = 'Please enter a valid email';
+                        document.getElementById('email-error').style.display = 'block';
+                        isValid = false;
+                    }
 
-                // Validate message
-                if (!message) {
-                    document.getElementById('message-error').textContent = 'Project description is required';
-                    document.getElementById('message-error').style.display = 'block';
-                    isValid = false;
+                    // Validate message
+                    if (!message) {
+                        document.getElementById('message-error').textContent = 'Project description is required';
+                        document.getElementById('message-error').style.display = 'block';
+                        isValid = false;
+                    }
+                } 
+                else if (formType === 'patronage') {
+                    const name = form.querySelector('#patronage-name').value.trim();
+                    const email = form.querySelector('#patronage-email').value.trim();
+                    const project = form.querySelector('#patronage-project').value.trim();
+                    const impact = form.querySelector('#patronage-impact').value.trim();
+
+                    // Validate name
+                    if (!name) {
+                        document.getElementById('patronage-name-error').textContent = 'Name is required';
+                        document.getElementById('patronage-name-error').style.display = 'block';
+                        isValid = false;
+                    }
+
+                    // Validate email
+                    if (!email) {
+                        document.getElementById('patronage-email-error').textContent = 'Email is required';
+                        document.getElementById('patronage-email-error').style.display = 'block';
+                        isValid = false;
+                    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        document.getElementById('patronage-email-error').textContent = 'Please enter a valid email';
+                        document.getElementById('patronage-email-error').style.display = 'block';
+                        isValid = false;
+                    }
+
+                    // Validate project
+                    if (!project) {
+                        document.getElementById('patronage-project-error').textContent = 'Project description is required';
+                        document.getElementById('patronage-project-error').style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    // Validate impact
+                    if (!impact) {
+                        document.getElementById('patronage-impact-error').textContent = 'Impact description is required';
+                        document.getElementById('patronage-impact-error').style.display = 'block';
+                        isValid = false;
+                    }
                 }
 
                 return isValid;
